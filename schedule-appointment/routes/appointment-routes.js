@@ -5,11 +5,15 @@
 let express = require('express'),
     app = express();
 let router = require('express').Router();
-var appointmentController = require('./appointment-controller');
+var appointmentController = require('../controllers/appointment-controller');
 
 //Default API response
-router.route('/')
-    .get(appointmentController.root);
+router.get('/', function (req, res) {
+    res.json({
+       status: 'Schedule Appointment API Working!',
+       message: 'Welcome!',
+    });
+});
 
 //appointment API Routes
 router.route('/api/appointment')

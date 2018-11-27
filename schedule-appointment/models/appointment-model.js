@@ -21,7 +21,7 @@ var scheduleAppointmentSchema = mongoose.Schema({
       required: true
     },
     appointmentTime: {
-      type: Date,
+      type: String,
       required: true
     },
     message: {

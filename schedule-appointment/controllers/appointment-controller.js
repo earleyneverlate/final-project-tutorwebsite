@@ -2,7 +2,7 @@
 //api routes for scheduling appointments
 
 //Imports
-ScheduleAppointment = require('./appointment-model');
+ScheduleAppointment = require('../models/appointment-model');
 
 // ############## API ROUTE FUNCTIONS #####################
 //Function to handle index
