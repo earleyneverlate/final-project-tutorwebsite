@@ -1,0 +1,30 @@
+{
+  "name": "final-project-tutorwebsite",
+  "version": "1.0.0",
+  "description": "Final project for ITMD 462",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shameemah/final-project-tutorwebsite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shameemah/final-project-tutorwebsite/issues"
+  },
+  "homepage": "https://github.com/Shameemah/final-project-tutorwebsite#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.3.13"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
