@@ -18,7 +18,7 @@ exports.index = function (req, res) {
 
 //Function to get appointment by ID
 exports.view = function (req, res) {
-    ScheduleAppointment.findById(req.params.schedule_id, function (err, scheduleAppointment) {
+    ScheduleAppointment.findById(req.params.appointment_id, function (err, scheduleAppointment) {
       if (err) {
         res.send(err);
       } else {
@@ -47,7 +47,7 @@ exports.new = function (req, res) {
 
 //Function to update appointment by ID
 exports.update = function (req, res) {
-  ScheduleAppointment.findById(req.params.schedule_id, function (err, scheduleAppointment) {
+  ScheduleAppointment.findById(req.params.appointment_id, function (err, scheduleAppointment) {
     if (err) {
       res.send(err);
     } else {
@@ -70,7 +70,7 @@ exports.update = function (req, res) {
 
 //Function to delete appointment by ID
 exports.delete = function (req, res) {
-    ScheduleAppointment.remove({_id: req.params.schedule_id},
+    ScheduleAppointment.remove({_id: req.params.appointment_id},
       function (scheduleAppointment) {
         res.status(204).send();
     });
