@@ -9,10 +9,7 @@ var appointmentController = require('./appointment-controller');
 
 //Default API response
 router.get('/', function (req, res) {
-    res.json({
-       status: 'Schedule Appointment API Working!',
-       message: 'Welcome!',
-    });
+    res.render('index');
 });
 
 //apppointment routes
