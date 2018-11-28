@@ -5,5 +5,14 @@ block content
   form(method="POST")
     .form-group
       label(for='tutor') Tutor Name
-      input#name.form-control(type='text', placeholder='Enter tutor name', name="tutor", value=appointment.tutor)
+      input#tutor.form-control(type='text', placeholder='Enter tutor name', name="tutor", value=appointment.tutor)
+    .form-group
+      label(for='student') Student Name
+      input#student.form-control(type='text', placeholder='Enter student name', name="student", value=appointment.student)
+    .form-group
+      label(for='date') Appointment Date
+      input#date.form-control(type='text', placeholder='YYYY-MM-DD', name="date", value=appointment.date)
+    .form-group
+      label(for='time') Appointment Time
+      input#time.form-control(type='text', placeholder='HH:mm', name="time", value=appointment.time)
     button.btn.btn-dark(type='submit')= command
