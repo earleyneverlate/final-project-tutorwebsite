@@ -10,9 +10,12 @@ block content
       label(for='student') Student Name
       input#student.form-control(type='text', placeholder='Enter student name', name="student", value=appointment.student)
     .form-group
-      label(for='date') Appointment Date
-      input#date.form-control(type='text', placeholder='YYYY-MM-DD', name="date", value=appointment.date)
+      label(for='appointmentDate') Appointment Date
+      input#appointmentDate.form-control(type='date', placeholder='YYYY-MM-DD', name="appointmentDate", value=appointment.appointmentDate)
     .form-group
-      label(for='time') Appointment Time
-      input#time.form-control(type='text', placeholder='HH:mm', name="time", value=appointment.time)
+      label(for='appointmentTime') Appointment Time
+      input#appointmentTime.form-control(type='text', placeholder='HH:mm', name="appointmentTime", value=appointment.appointmentTime)
+    .form-group
+      label(for='message') Message
+      textarea#message.form-control(type='text', placeholder='Enter message', name="message", value=appointment.message)
     button.btn.btn-dark(type='submit')= command

@@ -21,7 +21,7 @@ exports.addappointment = function (req, res) {
 
     scheduleAppointment.save(function (err, scheduleAppointment) {
       if (err) {
-        res.render('error', {message: "Sorry, appointment could not be added!"});
+        res.render('error', {message: err});
       } else {
         res.render('error', {message: "Appointment scheduled!"});
       }
