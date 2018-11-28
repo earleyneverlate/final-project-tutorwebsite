@@ -16,7 +16,7 @@ router.get('/', function (req, res) {
 });
 
 //apppointment routes
-router.route('/books/new')
+router.route('/appointment/new')
     .get(appointmentController.newappointment)
     .post(appointmentController.addappointment)
 
