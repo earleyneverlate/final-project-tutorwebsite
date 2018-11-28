@@ -4,12 +4,6 @@ block content
   h2.mt-5= title
   form(method="POST")
     .form-group
-      label(for='title') Title
-      input#name.form-control(type='text', placeholder='Enter book title', name="title", value=books.title)
-    .form-group
-      label(for='author') Author
-      input#author.form-control(type='text', placeholder='Enter author name', name="author", value=books.author)
-    .form-group
-      label(for='numPages') Number of Pages
-      input#numPages.form-control(type='text', placeholder='Enter number of pages', name="numPages", value=books.numPages)
+      label(for='tutor') Tutor Name
+      input#name.form-control(type='text', placeholder='Enter tutor name', name="tutor", value=appointment.tutor)
     button.btn.btn-dark(type='submit')= command

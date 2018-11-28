@@ -4,7 +4,7 @@
 let express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
-    appointmentRoutes = require("./appointment-routes"),
+    routes = require("./routes"),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
 
@@ -21,7 +21,7 @@ mongoose.connect('mongodb://localhost/tutorwebsite');
 var db = mongoose.connection;
 
 //Using appointmentRoutes which defines all the API endpoints
-app.use('/', appointmentRoutes)
+app.use('/', routes)
 
 app.listen(port);
 console.log('Server is running on port: ' + port);
