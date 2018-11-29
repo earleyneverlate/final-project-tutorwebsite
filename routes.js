@@ -5,7 +5,7 @@
 let express = require('express'),
     app = express();
 let router = require('express').Router();
-var appointmentController = require('./appointment-controller');
+var appointmentController = require('./controllers/appointment-controller');
 
 //Default API response
 router.get('/', function (req, res) {

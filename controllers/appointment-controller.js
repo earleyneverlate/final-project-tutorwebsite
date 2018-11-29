@@ -2,7 +2,7 @@
 //api routes for scheduling appointments
 
 //Imports
-ScheduleAppointment = require('./appointment-model');
+ScheduleAppointment = require('../models/appointment-model');
 
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display form page when 'Add Book' is clicked
