@@ -1,0 +1,26 @@
+extends layout.pug
+
+block content
+  h1.mt-5= title
+    form(method="POST")
+      .form-group
+        label(for='name') Name
+        input#name.form-control(type='text', placeholder='Enter Name', name="name", value=tutor.name)
+      .form-group
+        label(for='location') Location
+        input#author.form-control(type='text', placeholder='Enter Location', name="location", value=tutor.location)
+      .form-group
+        label(for='grade') Grade Level
+        select#studentGrade.form-control(name="grade", value=tutor.grade)
+          option(selected='') Select grade...
+          option(value='9') 9th
+          option(value='10') 10th
+          option(value='11') 11th
+          option(value='12') 12th
+          option(value='9-10') 9th-10th
+          option(value='11-12') 11th-12th
+          option(value='9-12') 9th-12th
+      .form-group
+        label(for='availability') Availability
+        input#numPages.form-control(type='text', placeholder='Enter Availability', name="availability", value=tutor.availability)
+      button.btn.btn-primary(type='submit') Submit Profile
