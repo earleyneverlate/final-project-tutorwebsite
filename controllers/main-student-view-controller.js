@@ -1,5 +1,5 @@
-//File Name: student-view-model.js
-StudentView = require('../models/student-view-model');
+//File Name: main-student-view-model.js
+StudentView = require('../models/main-student-view-model');
 
 exports.newstudentview = function (req, res){
   res.render('student-view-model', {title:"View Students", command:"View Students", view:{}});

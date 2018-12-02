@@ -1,4 +1,4 @@
-//File Name: tutor-view-model.js - This file defines the database schema for viewing tutors
+//File Name: main-tutor-view-model.js - This file defines the database schema for viewing tutors
 
 //Imports
 let mongoose = require('mongoose');
