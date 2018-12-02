@@ -1,5 +1,5 @@
-//File Name: main-tutor-controller;js 
-TutorView = require('/models/tutor-view-model');
+//File Name: main-tutor-controller;js
+TutorView = require('../models/tutor-view-model');
 
 exports.newtutorview = function (req, res){
   res.render('tutor-view-model', {title:"View Tutors", command:"View Tutors", view:{}});
@@ -46,7 +46,7 @@ exports.view = function (req, res) {
     });
 };
 
-//Function to tutor view 
+//Function to tutor view
 exports.new = function (req, res) {
     var tutorView = new tutorView();
     tutorView.name = req.body.name;
@@ -94,4 +94,3 @@ exports.delete = function (req, res) {
         res.status(204).send();
     });
 };
-

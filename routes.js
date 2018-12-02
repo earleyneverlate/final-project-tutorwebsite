@@ -45,8 +45,8 @@ router.route('/api/studentview')
 
 router.route('/api/studentview/:studentView_id')
 	.get(studentviewController.view)
-    .put(studentview.update)
-    .delete(studentview.delete);
+  .put(studentviewController.update)
+  .delete(studentviewController.delete);
 
 //tutor view API routes
 router.route('/api/tutorview')
@@ -55,8 +55,8 @@ router.route('/api/tutorview')
 
 router.route('/api/tutorview/:tutorView_id')
 	.get(tutorviewController.view)
-    .put(tutorview.update)
-    .delete(tutorview.delete);
+  .put(tutorviewController.update)
+  .delete(tutorviewController.delete);
 
 //Export module
 module.exports = router;
