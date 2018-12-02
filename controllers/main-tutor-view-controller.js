@@ -1,4 +1,4 @@
-//File Name: main-tutor-controller;js
+//File Name: main-tutor-view-controller;js
 TutorView = require('../models/main-tutor-view-model');
 
 exports.newtutorview = function (req, res){
