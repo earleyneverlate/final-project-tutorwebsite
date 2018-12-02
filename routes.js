@@ -7,6 +7,7 @@ let express = require('express'),
 let router = require('express').Router();
 var appointmentController = require('./controllers/appointment-controller');
 var studentviewController = require('./controllers/main-student-controller');
+var tutorviewController = require('./controllers/main-tutor-controller');
 
 //Default API response
 router.get('/', function (req, res) {
@@ -22,6 +23,11 @@ router.route('/appointment/new')
 router.route('student/view')
 	.get(studentviewController.newstudentview)
 	.post(studentviewController.addstudentview)
+
+//tutor view routes
+router.route('tutor/view')
+	.get(tutorviewController.newtutorview)
+	.post(tutorviewController.addtutorview)
 
 //appointment API routes
 router.route('/api/appointment')
@@ -42,6 +48,16 @@ router.route('/api/studentview/:studentView_id')
 	.get(studentviewController.view)
     .put(studentview.update)
     .delete(studentview.delete);
+
+//tutor view API routes
+router.route('/api/tutorview')
+	.get(tutorviewController.index)
+	.post(tutorviewController.new);
+
+router.route('/api/tutorview/:tutorView_id')
+	.get(tutorviewController.view)
+    .put(tutorview.update)
+    .delete(tutorview.delete);
 
 //Export module
 module.exports = router;
