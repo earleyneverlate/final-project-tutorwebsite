@@ -22,5 +22,18 @@ block content
           option(value='9-12') 9th-12th
       .form-group
         label(for='availability') Availability
-        input#numPages.form-control(type='text', placeholder='Enter Availability', name="availability", value=tutor.availability)
+        input#tutorAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='monday', value=tutor.availability)
+        label(for="monday" class="form-check-label") Monday
+        input#tutorAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='tuesday', value=tutor.availability)
+        label(for="tuesday" class="form-check-label") Tuesday
+        input#tutorAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='wednesday', value=tutor.availability)
+        label(for="wednesday" class="form-check-label") Wednesday
+        input#tutorAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='thursday', value=tutor.availability)
+        label(for="thursday" class="form-check-label") Thursday
+        input#tutorAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='friday', value=tutor.availability)
+        label(for="friday" class="form-check-label") Friday
+        input#tutorAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='saturday', value=tutor.availability)
+        label(for="saturday" class="form-check-label") Saturday
+        input#tutorAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='sunday', value=tutor.availability)
+        label(for="sunday" class="form-check-label") Sunday
       button.btn.btn-primary(type='submit') Submit Profile
