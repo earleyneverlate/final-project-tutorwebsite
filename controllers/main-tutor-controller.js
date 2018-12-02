@@ -1,5 +1,5 @@
 //File Name: main-tutor-controller;js
-TutorView = require('../models/tutor-view-model');
+TutorView = require('../models/main-tutor-view-model');
 
 exports.newtutorview = function (req, res){
   res.render('tutor-view-model', {title:"View Tutors", command:"View Tutors", view:{}});
