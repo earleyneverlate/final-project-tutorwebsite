@@ -17,6 +17,11 @@ router.route('/appointment/new')
     .get(appointmentController.newappointment)
     .post(appointmentController.addappointment)
 
+//student view routes
+router.route('student/view')
+	.get(studentviewController.newstudentview)
+	.post(studentviewController.addstudentview)
+
 //appointment API routes
 router.route('/api/appointment')
     .get(appointmentController.index)
@@ -27,6 +32,15 @@ router.route('/api/appointment/:appointment_id')
     .put(appointmentController.update)
     .delete(appointmentController.delete);
 
+//student view API routes
+router.route('/api/studentview')
+	.get(studentviewController.index)
+	.post(studentviewController.new);
+
+router.route('/api/studentview/:studentView_id')
+	.get(studentviewController.view)
+    .put(studentview.update)
+    .delete(studentview.delete);
 
 //Export module
 module.exports = router;
