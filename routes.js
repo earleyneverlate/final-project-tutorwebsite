@@ -5,8 +5,8 @@ let express = require('express'),
     app = express();
 let router = require('express').Router();
 var appointmentController = require('./controllers/appointment-controller');
-var studentviewController = require('./controllers/main-student-controller');
-var tutorviewController = require('./controllers/main-tutor-controller');
+var studentviewController = require('./controllers/student-controller');
+var tutorviewController = require('./controllers/tutor-controller');
 
 //Default API response
 router.get('/', function (req, res) {
@@ -18,15 +18,14 @@ router.route('/appointment/new')
     .get(appointmentController.newappointment)
     .post(appointmentController.addappointment)
 
+router.route('/tutor/new')
+    .get(tutorviewController.newtutor)
+    .post(tutorviewController.addtutor)
+
 //student view routes
 router.route('student/view')
 	.get(studentviewController.newstudentview)
 	.post(studentviewController.addstudentview)
-
-//tutor view routes
-router.route('tutor/view')
-	.get(tutorviewController.newtutorview)
-	.post(tutorviewController.addtutorview)
 
 //appointment API routes
 router.route('/api/appointment')

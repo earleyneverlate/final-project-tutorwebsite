@@ -1,4 +1,4 @@
-//File Name: student-view-model.js - This file defines the database schema for viewing students 
+//File Name: main-student-view-model.js - This file defines the database schema for viewing students 
 
 //Imports
 let mongoose = require('mongoose');
