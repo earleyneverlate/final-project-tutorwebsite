@@ -1,5 +1,4 @@
-//File Name: appointment-routes.js - API endpoints for scheduling scheduling
-//appointments are defined here
+//File Name: appointment-routes.js - this file contains API endpoints
 
 //Imports
 let express = require('express'),
