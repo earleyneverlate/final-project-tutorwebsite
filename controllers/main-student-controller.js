@@ -46,7 +46,7 @@ exports.view = function (req, res) {
     });
 };
 
-//Function to student view appointment
+//Function to student view
 exports.new = function (req, res) {
     var studentView = new studentView();
     studentView.name = req.body.name;
