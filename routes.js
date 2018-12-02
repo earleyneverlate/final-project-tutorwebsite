@@ -6,6 +6,7 @@ let express = require('express'),
     app = express();
 let router = require('express').Router();
 var appointmentController = require('./controllers/appointment-controller');
+var studentviewController = require('./controllers/main-student-controller');
 
 //Default API response
 router.get('/', function (req, res) {
