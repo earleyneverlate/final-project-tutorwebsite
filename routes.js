@@ -1,11 +1,12 @@
-//File Name: appointment-routes.js - API endpoints for scheduling scheduling
-//appointments are defined here
+//File Name: appointment-routes.js - this file contains API endpoints
 
 //Imports
 let express = require('express'),
     app = express();
 let router = require('express').Router();
 var appointmentController = require('./controllers/appointment-controller');
+var studentviewController = require('./controllers/main-student-controller');
+var tutorviewController = require('./controllers/main-tutor-controller');
 
 //Default API response
 router.get('/', function (req, res) {
@@ -21,6 +22,11 @@ router.route('/appointment/new')
 router.route('student/view')
 	.get(studentviewController.newstudentview)
 	.post(studentviewController.addstudentview)
+
+//tutor view routes
+router.route('tutor/view')
+	.get(tutorviewController.newtutorview)
+	.post(tutorviewController.addtutorview)
 
 //appointment API routes
 router.route('/api/appointment')
@@ -39,8 +45,18 @@ router.route('/api/studentview')
 
 router.route('/api/studentview/:studentView_id')
 	.get(studentviewController.view)
-    .put(studentview.update)
-    .delete(studentview.delete);
+  .put(studentviewController.update)
+  .delete(studentviewController.delete);
+
+//tutor view API routes
+router.route('/api/tutorview')
+	.get(tutorviewController.index)
+	.post(tutorviewController.new);
+
+router.route('/api/tutorview/:tutorView_id')
+	.get(tutorviewController.view)
+  .put(tutorviewController.update)
+  .delete(tutorviewController.delete);
 
 //Export module
 module.exports = router;
