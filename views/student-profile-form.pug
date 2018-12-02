@@ -1,0 +1,36 @@
+extends layout.pug
+
+block content
+  h1.mt-5= title
+    form(method="POST")
+      .form-group
+        label(for='name') Name
+        input#name.form-control(type='text', placeholder='Enter Name', name="name", value=student.name)
+      .form-group
+        label(for='location') Location
+        input#location.form-control(type='text', placeholder='Enter Location', name="location", value=student.location)
+      .form-group
+        label(for='grade') Grade Level
+        select#studentGrade.form-control(name="grade", value=student.grade)
+          option(selected='') Select grade...
+          option(value='9') 9th
+          option(value='10') 10th
+          option(value='11') 11th
+          option(value='12') 12th
+      .form-group
+        label(for='availability') Availability
+        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='monday', value=student.availability)
+        label(for="monday" class="form-check-label") Monday
+        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='tuesday', value=student.availability)
+        label(for="tuesday" class="form-check-label") Tuesday
+        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='wednesday', value=student.availability)
+        label(for="wednesday" class="form-check-label") Wednesday
+        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='thursday', value=student.availability)
+        label(for="thursday" class="form-check-label") Thursday
+        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='friday', value=student.availability)
+        label(for="friday" class="form-check-label") Friday
+        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='saturday', value=student.availability)
+        label(for="saturday" class="form-check-label") Saturday
+        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='sunday', value=student.availability)
+        label(for="sunday" class="form-check-label") Sunday
+      button.btn.btn-primary(type='submit') Submit Profile
