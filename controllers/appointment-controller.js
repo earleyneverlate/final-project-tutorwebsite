@@ -12,7 +12,7 @@ exports.newappointment = function (req, res) {
 
 //Function to display all appointments
 exports.viewappointment = function (req, res){
-  ScheduleAppointment.get(function (err, appointments) {
+  ScheduleAppointment.get(function (err, appointment) {
     if (err) {
       res.render('error', {message: "Uh oh! No appointments were retrieved."});
     } else {
