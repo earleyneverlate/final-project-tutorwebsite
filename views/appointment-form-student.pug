@@ -6,9 +6,13 @@ block links
 
 block navelements
   li.nav-item
-    a.nav-link(href='#') Find Tutors
+      a.nav-link(href='/student/view') Find Students
   li.nav-item
-    a.nav-link(href='#') Find Students
+      a.nav-link(href='#') View Profile
+  li.nav-item
+      a.nav-link(href='#') View Appointments
+  li.nav-item
+      a.nav-link(href='/login') Logout
 
 block content
   h2.mt-5= title
@@ -24,16 +28,16 @@ block content
           form(method='post')
             .form-group
               label.control-label.requiredField(for='tutor')
-                | Tutor Name
+                | Tutor ID
                 span.asteriskField
                   | *
-              input#tutor.form-control(type='text' placeholder='Enter tutor name' name="tutor" value=appointment.tutor)
+              input#tutor.form-control(type='text' placeholder='Enter your tutor ID' name="tutor" value=appointment.tutor)
             .form-group
               label.control-label.requiredField(for='student')
-                | Student Name
+                | Student ID
                 span.asteriskField
                   | *
-              input#student.form-control(type='text' placeholder='Enter student name' name="student" value=appointment.student)
+              input#student.form-control(type='text' placeholder='Enter student ID' name="student" value=student)
             .form-group
               label.control-label.requiredField(for='appointmentDate')
                 | Date

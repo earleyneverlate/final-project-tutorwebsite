@@ -1,4 +1,4 @@
-//File Name: tutor-controller;js
+//File Name: tutor-controller.js - This file contains the functions for the tutor routes
 
 //Imports
 TutorView = require('../models/tutor-model');
@@ -9,16 +9,43 @@ exports.newtutor = function (req, res){
   res.render('tutor-profile-form', {title:"New Tutor Profile", tutor:{}});
 };
 
-//Function to display main-tutor-view
+//Function to display page with list of all tutors
 exports.alltutors = function (req, res){
-  res.render('main-tutor-view', {title:"Find Tutors", tutor:{}});
+  TutorView.get(function (err, tutor) {
+    if (err) {
+      res.render('error', {message: "Uh oh! No tutors were retrieved."});
+    } else {
+      res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), tutors:tutor});
+    }
+  });
 };
 
+//Function to handle index
+exports.tutorindex = function (req, res) {
+  TutorView.get(function (err, tutor) {
+    if (err) {
+      res.render('error', {message: "Oops! No tutor was found."});
+    } else {
+      res.render('tutor-detail', {tutors: tutor});
+    }
+  });
+};
+
+//Function to get tutor by ID and display on tutor-detail page
+exports.viewtutor = function (req, res) {
+  TutorView.findById(req.params.tutor_id, function (err, tutor) {
+    if (err) {
+      res.render('error', {message: "Oops! No tutor found."});
+    } else {
+      res.render('tutor-detail', {tutor: tutor});
+    }
+  });
+};
 
 //Function to add new tutor to database
 exports.addtutor = function (req, res) {
     var tutorView = new TutorView();
-    tutorView.name = req.body.name;
+    tutorView.user = req.params.tutor_id;
     tutorView.location = req.body.location;
     tutorView.grade = req.body.grade;
     tutorView.subject = req.body.subject;
@@ -28,7 +55,8 @@ exports.addtutor = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else {
-        res.render('error', {message: "Tutor Added!"});
+        req.flash('message', 'Profile created! Find students below.');
+        res.redirect('/student/view');
       }
     });
 };
@@ -36,7 +64,7 @@ exports.addtutor = function (req, res) {
 // ############## API ROUTE FUNCTIONS #####################
 //Function to handle index
 exports.index = function (req, res) {
-    tutorView.get(function (err, tutorView) {
+    TutorView.get(function (err, tutorView) {
       if (err) {
         res.send(err);
       } else {
@@ -47,7 +75,7 @@ exports.index = function (req, res) {
 
 //Function to get tutor view by ID
 exports.view = function (req, res) {
-    tutorView.findById(req.params.tutorView_id, function (err, tutorView) {
+    TutorView.findById(req.params.tutor_id, function (err, tutorView) {
       if (err) {
         res.send(err);
       } else {
@@ -58,7 +86,7 @@ exports.view = function (req, res) {
 
 //Function to add tutor
 exports.new = function (req, res) {
-    var tutorView = new tutorView();
+    var tutorView = new TutorView();
     tutorView.name = req.body.name;
     tutorView.location = req.body.location;
     tutorView.grade = req.body.grade;
@@ -76,7 +104,7 @@ exports.new = function (req, res) {
 
 //Function to update tutor view by ID
 exports.update = function (req, res) {
-  tutorView.findById(req.params.tutorView_id, function (err, tutorView) {
+  TutorView.findById(req.params.tutor_id, function (err, tutorView) {
     if (err) {
       res.send(err);
     } else {
@@ -86,7 +114,7 @@ exports.update = function (req, res) {
       tutorView.subject = req.body.subject;
       tutorView.availability = req.body.availability;
 
-      tutorView.save(function (err) {
+      TutorView.save(function (err) {
         if (err) {
           res.send(err);
         } else {
@@ -99,7 +127,7 @@ exports.update = function (req, res) {
 
 //Function to delete tutor view by ID
 exports.delete = function (req, res) {
-    tutorView.remove({_id: req.params.tutorView_id},
+    TutorView.remove({_id: req.params.tutor_id},
       function (tutorView) {
         res.status(204).send();
     });
