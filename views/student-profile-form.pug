@@ -18,19 +18,18 @@ block content
           option(value='11') 11th
           option(value='12') 12th
       .form-group
-        label(for='availability') Availability
-        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='monday', value=student.availability)
-        label(for="monday" class="form-check-label") Monday
-        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='tuesday', value=student.availability)
-        label(for="tuesday" class="form-check-label") Tuesday
-        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='wednesday', value=student.availability)
-        label(for="wednesday" class="form-check-label") Wednesday
-        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='thursday', value=student.availability)
-        label(for="thursday" class="form-check-label") Thursday
-        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='friday', value=student.availability)
-        label(for="friday" class="form-check-label") Friday
-        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='saturday', value=student.availability)
-        label(for="saturday" class="form-check-label") Saturday
-        input#studentAvailability.form-control(class='form-check-input' type='checkbox', name="availability", id='sunday', value=student.availability)
-        label(for="sunday" class="form-check-label") Sunday
+        input#studentAvailability.form-control(type='checkbox' name="monday" value=student.availability)
+        label(for='monday') Monday
+        input#studentAvailability.form-control(type='checkbox' name="tuesday" value=student.availability)
+        label(for='tuesday') Tuesday
+        input#studentAvailability.form-control(type='checkbox' name="wednesday" value=student.availability)
+        label(for='wednesday') Wednesday
+        input#studentAvailability.form-control(type='checkbox' name="thursday" value=student.availability)
+        label(for='thursday') Thursday
+        input#studentAvailability.form-control(type='checkbox' name="friday" value=student.availability)
+        label(for='friday') Friday
+        input#studentAvailability.form-control(type='checkbox' name="saturday" value=student.availability)
+        label(for='saturday') Saturday
+        input#studentAvailability.form-control(type='checkbox' name="sunday" value=student.availability)
+        label(for='sunday') Sunday
       button.btn.btn-primary(type='submit') Submit Profile
