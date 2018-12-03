@@ -7,8 +7,8 @@ let mongoose = require('mongoose');
 var registerSchema = new mongoose.Schema({
   first: { type: String, required: true },
   last: { type: String, required: true },
-  username: { type: String, required: true },
-  email: { type: String, required: true },
+  username: { type: String, unique:true, required: true },
+  email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   confirm: { type: String, required: true }
 });

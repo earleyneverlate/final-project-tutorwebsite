@@ -6,7 +6,7 @@ Register = require('../models/register-model');
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display login view
 exports.viewlogin = function (req, res){
-  res.render('login', {title:"Login", login:{}});
+  res.render('login', {message: req.flash('successMessage'), login:{}});
 };
 
 //Function to display register view
@@ -43,7 +43,8 @@ exports.adduser = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else {
-        res.render('login', {message: "You are registered! Please log in below."});
+        req.flash('successMessage', 'You are registered! Login below.');
+        res.redirect('./login');
       }
     });
 };
