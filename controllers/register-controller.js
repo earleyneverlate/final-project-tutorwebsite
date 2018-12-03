@@ -1,5 +1,4 @@
-//File Name: register-controller.js - This file contains the functions for the
-//api routes for scheduling appointments
+//File Name: register-controller.js 
 
 //Imports
 ScheduleAppointment = require('../models/register-model');
