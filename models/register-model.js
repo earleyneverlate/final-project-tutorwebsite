@@ -9,6 +9,7 @@ var registerSchema = new mongoose.Schema({
   last: { type: String, required: true },
   username: { type: String, unique:true, required: true },
   email: { type: String, unique: true, required: true },
+  role: { type: String, required: true },
   password: { type: String, required: true },
   confirm: { type: String, required: true }
 });
