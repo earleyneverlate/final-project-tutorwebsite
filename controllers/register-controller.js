@@ -1,10 +1,10 @@
-//File Name: register-controller.js
+//File Name: register-controller.js - This file contains the functions for the login and sign up routes
 
 //Imports
 Register = require('../models/register-model');
 
 // ############## HTML ROUTE FUNCTIONS #####################
-//Function to display register view
+//Function to display login view
 exports.viewlogin = function (req, res){
   res.render('login', {title:"Login", login:{}});
 };
@@ -29,7 +29,7 @@ exports.login = function (req, res) {
     });
 };
 
-//Function to add new registered users to database
+//Function to add new users to database
 exports.adduser = function (req, res) {
     var register = new Register();
     register.first = req.body.first;

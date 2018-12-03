@@ -1,4 +1,4 @@
-//File Name: tutor-controller;js
+//File Name: tutor-controller.js - This file contains the functions for the tutor routes
 
 //Imports
 TutorView = require('../models/tutor-model');
@@ -9,7 +9,7 @@ exports.newtutor = function (req, res){
   res.render('tutor-profile-form', {title:"New Tutor Profile", tutor:{}});
 };
 
-//Function to display main-tutor-view
+//Function to display page with list of all tutors
 exports.alltutors = function (req, res){
   TutorView.get(function (err, tutor) {
     if (err) {

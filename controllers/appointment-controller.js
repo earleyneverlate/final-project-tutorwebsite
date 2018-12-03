@@ -1,5 +1,4 @@
-//File Name: schedule-controller.js - This file contains the functions for the
-//api routes for scheduling appointments
+//File Name: appointment-controller.js - This file contains the functions for the appointment routes
 
 //Imports
 ScheduleAppointment = require('../models/appointment-model');

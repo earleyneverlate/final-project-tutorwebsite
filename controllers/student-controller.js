@@ -1,4 +1,4 @@
-//File Name: student-controller.js
+//File Name: student-controller.js - This file contains the functions for the student routes
 StudentView = require('../models/student-model');
 
 //Imports
@@ -9,7 +9,7 @@ exports.newstudent = function (req, res){
   res.render('student-profile-form', {title:"New Student Profile", student:{}});
 };
 
-//Function to display main-student-view
+//Function to display page with list of all students
 exports.allstudents = function (req, res){
   res.render('main-student-view', {title:"Find Students", student:{}});
 };
