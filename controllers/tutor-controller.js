@@ -51,11 +51,12 @@ exports.addtutor = function (req, res) {
     tutorView.subject = req.body.subject;
     tutorView.availability = req.body.availability;
 
-    TutorView.save(function (err, tutorView) {
+    tutorView.save(function (err, tutorView) {
       if (err) {
         res.render('error', {message: err});
       } else {
-        res.render('error', {message: "Tutor Added!"});
+        req.flash('message', 'Profile created! Find students below.');
+        res.redirect('/student/view');
       }
     });
 };
