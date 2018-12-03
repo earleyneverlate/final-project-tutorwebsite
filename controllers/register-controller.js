@@ -3,6 +3,7 @@
 //Imports
 Register = require('../models/register-model');
 Tutor = require('../models/tutor-model');
+Student = require('../models/student-model');
 
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display login view
@@ -40,7 +41,15 @@ exports.login = function (req, res) {
               }
             });
           } else {
-            res.redirect('./tutor/view');
+            Student.findOne({ user: user._id})
+            .exec(function (err, student) {
+              if (err) {
+                res.render('error', {message: err});
+              } else {
+                req.flash('idnumber', student._id);
+                res.redirect('./tutor/view');
+              }
+            });
           }
         } else {
           req.flash('message', 'Incorrect username or password! Try again.');

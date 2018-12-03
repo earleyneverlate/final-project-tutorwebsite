@@ -15,7 +15,7 @@ exports.alltutors = function (req, res){
     if (err) {
       res.render('error', {message: "Uh oh! No tutors were retrieved."});
     } else {
-      res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), tutors:tutor});
+      res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), idnumber: req.flash('idnumber'), tutors:tutor});
     }
   });
 };
