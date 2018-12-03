@@ -45,7 +45,7 @@ exports.viewstudent = function (req, res) {
 //Function to add new student to database
 exports.addstudent = function (req, res) {
     var studentView = new StudentView();
-    studentView.name = req.body.name;
+    studentView.user = req.params.student_id;
     studentView.location = req.body.location;
     studentView.grade = req.body.grade;
     studentView.subject = req.body.subject;
