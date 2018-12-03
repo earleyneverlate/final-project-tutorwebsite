@@ -8,13 +8,13 @@ var mongoose = require('mongoose');
 var scheduleAppointmentSchema = mongoose.Schema({
     tutor: {
         //type: Schema.Types.ObjectId, ref: 'Tutor'
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     student: {
         //type: Schema.Types.ObjectId, ref: 'Student'
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     appointmentDate: {
       type: Date,

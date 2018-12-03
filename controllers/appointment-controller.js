@@ -1,5 +1,4 @@
-//File Name: schedule-controller.js - This file contains the functions for the
-//api routes for scheduling appointments
+//File Name: appointment-controller.js - This file contains the functions for the appointment routes
 
 //Imports
 ScheduleAppointment = require('../models/appointment-model');
@@ -8,6 +7,17 @@ ScheduleAppointment = require('../models/appointment-model');
 //Function to display form page when 'Schedule Appointment' is clicked
 exports.newappointment = function (req, res) {
   res.render('appointment-form', {title: "Schedule Appointment", command: "Schedule Appointment", appointment: {}});
+};
+
+//Function to display all appointments
+exports.viewappointment = function (req, res){
+  ScheduleAppointment.get(function (err, appointment) {
+    if (err) {
+      res.render('error', {message: "Uh oh! No appointments were retrieved."});
+    } else {
+      res.render('appointment-view', {title:"View All Appointments", appointments:appointment});
+    }
+  });
 };
 
 //Function to add new appointment to database

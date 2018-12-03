@@ -17,11 +17,11 @@ block content
         th(scope='col') Time
         th(scope='col') Message
     tbody
-      tr
-        td
-          a(href='#') appointment.tutor
-        td=appointment.student
-        td=appointment.date
-        td=appointment.time
-        td=appointment.message
-
+      each appointment in appointments
+        tr
+          td
+            a(href='#')= appointment.tutor
+          td=appointment.student
+          td=appointment.appointmentDate
+          td=appointment.appointmentTime
+          td=appointment.message
