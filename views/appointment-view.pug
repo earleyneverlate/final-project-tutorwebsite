@@ -1,0 +1,27 @@
+extends layout.pug
+
+block navelements
+  li.nav-item
+    a.nav-link(href='#') Find Tutors
+  li.nav-item
+    a.nav-link(href='#') Find Students
+
+block content
+  h2.mt-5=title
+  table.table.table-striped.table-bordered(style='margin-top: 1.5em')
+    thead
+      tr
+        th(scope='col') Tutor Name
+        th(scope='col') Student Name
+        th(scope='col') Date
+        th(scope='col') Time
+        th(scope='col') Message
+    tbody
+      tr
+        td
+          a(href='#') appointment.tutor
+        td=appointment.student
+        td=appointment.date
+        td=appointment.time
+        td=appointment.message
+
