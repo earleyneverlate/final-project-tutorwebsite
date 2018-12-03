@@ -5,8 +5,12 @@ ScheduleAppointment = require('../models/appointment-model');
 
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display form page when 'Schedule Appointment' is clicked
-exports.newappointment = function (req, res) {
-  res.render('appointment-form', {title: "Schedule Appointment", student: req.params.student_id, command: "Schedule Appointment", appointment: {}});
+exports.newstudentappointment = function (req, res) {
+  res.render('appointment-form-student', {title: "Schedule Appointment", student: req.params.student_id, command: "Schedule Appointment", appointment: {}});
+};
+
+exports.newtutorappointment = function (req, res) {
+  res.render('appointment-form-tutor', {title: "Schedule Appointment", tutor: req.params.tutor_id, command: "Schedule Appointment", appointment: {}});
 };
 
 //Function to display all appointments
