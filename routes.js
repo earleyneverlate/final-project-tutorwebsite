@@ -23,7 +23,7 @@ router.route('/appointments/:user_id/view')
     .get(appointmentController.viewappointment)
 
 //tutor routes
-router.route('/tutor/new')
+router.route('/tutor/new/:tutor_id')
     .get(tutorviewController.newtutor)
     .post(tutorviewController.addtutor)
 

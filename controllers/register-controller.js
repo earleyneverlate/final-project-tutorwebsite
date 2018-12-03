@@ -51,9 +51,9 @@ exports.adduser = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else if(register.role === "tutor") {
-        res.redirect('/tutor/new');
+        res.redirect('/tutor/new/' +register._id);
       } else if(register.role === "student") {
-        res.redirect('/student/new');
+        res.redirect('/student/new/' +register._id);
       }
     });
 };

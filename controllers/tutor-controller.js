@@ -45,7 +45,7 @@ exports.viewtutor = function (req, res) {
 //Function to add new tutor to database
 exports.addtutor = function (req, res) {
     var tutorView = new TutorView();
-    tutorView.user = req.body.user;
+    tutorView.user = req.params.tutor_id;
     tutorView.location = req.body.location;
     tutorView.grade = req.body.grade;
     tutorView.subject = req.body.subject;
