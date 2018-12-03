@@ -1,12 +1,16 @@
-//File Name: main-tutor-view-controller;js
-TutorView = require('../models/main-tutor-view-model');
+//File Name: tutor-controller;js
 
-exports.newtutorview = function (req, res){
-  res.render('tutor-view-model', {title:"View Tutors", command:"View Tutors", view:{}});
+//Imports
+TutorView = require('../models/tutor-model');
+
+// ############## HTML ROUTE FUNCTIONS #####################
+//Function to display tutor-profile-form
+exports.newtutor = function (req, res){
+  res.render('tutor-profile-form', {title:"New Tutor Profile", tutor:{}});
 };
 
 //Function to add new tutor to database
-exports.addtutorview = function (req, res) {
+exports.addtutor = function (req, res) {
     var tutorView = new TutorView();
     tutorView.name = req.body.name;
     tutorView.location = req.body.location;
@@ -18,7 +22,7 @@ exports.addtutorview = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else {
-        res.render('error', {message: "Error"});
+        res.render('error', {message: "Tutor Added!"});
       }
     });
 };
