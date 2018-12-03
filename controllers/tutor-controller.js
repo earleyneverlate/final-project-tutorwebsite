@@ -56,6 +56,7 @@ exports.addtutor = function (req, res) {
         res.render('error', {message: err});
       } else {
         req.flash('message', 'Profile created! Find students below.');
+        req.flash('idnumber', tutorView.user);
         res.redirect('/student/view');
       }
     });

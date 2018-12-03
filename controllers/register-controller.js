@@ -2,6 +2,7 @@
 
 //Imports
 Register = require('../models/register-model');
+Tutor = require('../models/tutor-model');
 
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display login view
@@ -28,7 +29,19 @@ exports.login = function (req, res) {
           req.flash('message', 'No user found! Please register below.');
           res.redirect('./register');
         } else if (user.password === login.password) {
-          res.redirect('./tutor/view');
+          if (user.role === "tutor") {
+            Tutor.findOne({ user: user._id})
+            .exec(function (err, tutor) {
+              if (err) {
+                res.render('error', {message: err});
+              } else {
+                req.flash('idnumber', tutor._id);
+                res.redirect('./student/view');
+              }
+            });
+          } else {
+            res.redirect('./tutor/view');
+          }
         } else {
           req.flash('message', 'Incorrect username or password! Try again.');
           res.redirect('./login');
