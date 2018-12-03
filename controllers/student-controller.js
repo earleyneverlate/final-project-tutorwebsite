@@ -14,6 +14,28 @@ exports.allstudents = function (req, res){
   res.render('main-student-view', {title:"Find Students", student:{}});
 };
 
+//Function to handle index
+exports.studentindex = function (req, res) {
+  StudentView.get(function (err, student) {
+    if (err) {
+      res.render('error', {message: "Oops! No student was found."});
+    } else {
+      res.render('student-detail', {student: student});
+    }
+  });
+};
+
+//Function to get student by ID and display on student-detail page
+exports.viewstudent = function (req, res) {
+  StudentView.findById(req.params.student_id, function (err, student) {
+    if (err) {
+      res.render('error', {message: "Oops! No book student found."});
+    } else {
+      res.render('student-detail', {student: student});
+    }
+  });
+};
+
 //Function to add new student to database
 exports.addstudent = function (req, res) {
     var studentView = new StudentView();
@@ -35,7 +57,7 @@ exports.addstudent = function (req, res) {
 // ############## API ROUTE FUNCTIONS #####################
 //Function to handle index
 exports.index = function (req, res) {
-    studentView.get(function (err, studentView) {
+    StudentView.get(function (err, studentView) {
       if (err) {
         res.send(err);
       } else {
@@ -46,7 +68,7 @@ exports.index = function (req, res) {
 
 //Function to get student view by ID
 exports.view = function (req, res) {
-    studentView.findById(req.params.studentView_id, function (err, studentView) {
+    StudentView.findById(req.params.student_id, function (err, studentView) {
       if (err) {
         res.send(err);
       } else {
@@ -55,9 +77,9 @@ exports.view = function (req, res) {
     });
 };
 
-//Function to student view
+//Function to add student
 exports.new = function (req, res) {
-    var studentView = new studentView();
+    var studentView = new StudentView();
     studentView.name = req.body.name;
     studentView.location = req.body.location;
     studentView.grade = req.body.grade;
@@ -75,7 +97,7 @@ exports.new = function (req, res) {
 
 //Function to update student view by ID
 exports.update = function (req, res) {
-  studentView.findById(req.params.studentView_id, function (err, studentView) {
+  StudentView.findById(req.params.student_id, function (err, studentView) {
     if (err) {
       res.send(err);
     } else {
@@ -98,7 +120,7 @@ exports.update = function (req, res) {
 
 //Function to delete student view by ID
 exports.delete = function (req, res) {
-    studentView.remove({_id: req.params.studentView_id},
+    StudentView.remove({_id: req.params.student_id},
       function (studentView) {
         res.status(204).send();
     });
