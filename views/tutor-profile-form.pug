@@ -1,44 +1,113 @@
 extends layout.pug
 
+block links
+  link(rel='stylesheet', href='https://formden.com/static/cdn/bootstrap-iso.css')
+  link(rel='stylesheet', href='https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css')
+
 block navelements
   li.nav-item
     a.nav-link(href='#') Find Tutors
   li.nav-item
     a.nav-link(href='#') Find Students
-    
+
 block content
   h1.mt-5= title
-    form(method="POST")
-      .form-group
-        label(for='tutorName') Name
-        input#name.form-control(type='text' placeholder='Enter Name' name="name" value=tutor.name)
-      .form-group
-        label(for='location') Location
-        input#author.form-control(type='text', placeholder='Enter Location', name="location", value=tutor.location)
-      .form-group
-        label(for='grade') Tutor Grade Level
-        select#studentGrade.form-control(name="grade", value=tutor.grade)
-          option(selected='') Select grade...
-          option(value='9') 9th
-          option(value='10') 10th
-          option(value='11') 11th
-          option(value='12') 12th
-          option(value='9-10') 9th-10th
-          option(value='11-12') 11th-12th
-          option(value='9-12') 9th-12th
-      .form-group
-         input#tutorAvailability.form-control(type='checkbox' name="monday" value=tutor.availability)
-         label(for='monday') Monday
-         input#tutorAvailability.form-control(type='checkbox' name="tuesday" value=tutor.availability)
-         label(for='tuesday') Tuesday
-         input#tutorAvailability.form-control(type='checkbox' name="wednesday" value=tutor.availability)
-         label(for='wednesday') Wednesday
-         input#tutorAvailability.form-control(type='checkbox' name="thursday" value=tutor.availability)
-         label(for='thursday') Thursday
-         input#tutorAvailability.form-control(type='checkbox' name="friday" value=tutor.availability)
-         label(for='friday') Friday
-         input#tutorAvailability.form-control(type='checkbox' name="saturday" value=tutor.availability)
-         label(for='saturday') Saturday
-         input#tutorAvailability.form-control(type='checkbox' name="sunday" value=tutor.availability)
-         label(for='sunday') Sunday
-      button.btn.btn-primary(type='submit') Submit Profile
+  link(rel='stylesheet', href='https://formden.com/static/cdn/bootstrap-iso.css')
+  link(rel='stylesheet', href='https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css')
+  style.
+    .bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}
+  // HTML Form (wrapped in a .bootstrap-iso div)
+  .bootstrap-iso
+    .container-fluid
+      .row
+        .col-md-6.col-sm-6.col-xs-12
+          form(method='post')
+            .form-group
+              label.control-label.requiredField(for='name')
+                | Name
+                span.asteriskField
+                  | *
+              input#name.form-control(name='name', placeholder='Enter Name', type='text', value=tutor.name)
+            .form-group
+              label.control-label.requiredField(for='location')
+                | Location
+                span.asteriskField
+                  | *
+              .input-group
+                .input-group-addon
+                  i.fa.fa-map
+                input#location.form-control(name='location', placeholder='Enter Location', type='text', value=tutor.location)
+            .form-group
+              label.control-label.requiredField(for='grade')
+                | Tutor Grade
+                span.asteriskField
+                  | *
+              select#grade.select.form-control(name='grade', value=tutor.grade)
+                option(value='9th')
+                  | 9th
+                option(value='10th')
+                  | 10th
+                option(value='11th')
+                  | 11th
+                option(value='12th')
+                  | 12th
+                option(value='9th-10th')
+                  | 9th-10th
+                option(value='11th-12th')
+                  | 11th-12th
+                option(value='9th-12th')
+                  | 9th-12th
+              span#hint_grade.help-block
+                | Please enter what grade you are in.
+            .form-group
+              label.control-label.requiredField(for='subject')
+                | Tutor Subject
+                span.asteriskField
+                  | *
+              select#subject.select.form-control(name='subject', value=tutor.subject)
+                option(value='English')
+                  | English
+                option(value='History')
+                  | History
+                option(value='Calculus')
+                  | Calculus
+                option(value='Geography')
+                  | Geography
+                option(value='Algebra')
+                  | Algebra
+                option(value='Computer Science')
+                  | Computer Science
+                option(value='Biology')
+                  | Biology
+                option(value='Chemistry')
+                  | Chemistry
+                option(value='Physics')
+                  | Physics
+              span#hint_subject.help-block
+                | Please select the subject you need help with.
+            .form-group
+              label.control-label.requiredField(for='availability')
+                | Availability
+                span.asteriskField
+                  | *
+              select#availability.select.form-control(name='availability', value=tutor.availability)
+                option(value='Monday')
+                  | Monday
+                option(value='Tuesday')
+                  | Tuesday
+                option(value='Wednesday')
+                  | Wednesday
+                option(value='Thursday')
+                  | Thursday
+                option(value='Friday')
+                  | Friday
+                option(value='Saturday')
+                  | Saturday
+                option(value='Sunday')
+                  | Sunday
+              span#hint_availability.help-block
+                | Please select when you are available.
+            .form-group
+              div
+                button.btn.btn-primary(name='submit', type='submit')
+                  | Submit Profile

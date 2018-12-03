@@ -34,9 +34,13 @@ router.route('/student/new')
 router.route('/student/view')
     .get(studentviewController.allstudents)
 
+
 //register routes
 router.route('register/new')
     .get(registerController.newusers)
+
+router.route('/student/view/:student_id')
+    .get(studentviewController.viewstudent)
 
 //appointment API routes
 router.route('/api/appointment')
@@ -48,22 +52,22 @@ router.route('/api/appointment/:appointment_id')
     .put(appointmentController.update)
     .delete(appointmentController.delete);
 
-//student view API routes
-router.route('/api/studentview')
+//student API routes
+router.route('/api/student')
 	.get(studentviewController.index)
 	.post(studentviewController.new);
 
-router.route('/api/studentview/:studentView_id')
+router.route('/api/student/:student_id')
 	.get(studentviewController.view)
   .put(studentviewController.update)
   .delete(studentviewController.delete);
 
 //tutor view API routes
-router.route('/api/tutorview')
+router.route('/api/tutor')
 	.get(tutorviewController.index)
 	.post(tutorviewController.new);
 
-router.route('/api/tutorview/:tutorView_id')
+router.route('/api/tutor/:tutor_id')
 	.get(tutorviewController.view)
   .put(tutorviewController.update)
   .delete(tutorviewController.delete);

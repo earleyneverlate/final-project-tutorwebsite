@@ -1,5 +1,11 @@
 extends layout.pug
 
+block navelements
+  li.nav-item
+    a.nav-link(href='#') Find Tutors
+  li.nav-item
+    a.nav-link(href='#') Find Students
+    
 block content
 h1.mt-5= tutor.name
     a.btn.btn-primary(href='/profiles/tutorprofiles/' + tutor.id + '/update' style='margin-left: 25px') Update Profile
@@ -8,6 +14,7 @@ h1.mt-5= tutor.name
   h6.mt-5= "Name: '" + tutor.name
   h6.mt-5= "Location: '" + tutor.location
   h6.mt-5= "Tutor Grade Level: '" + tutor.grade
+  h6.mt-5= "Tutor Subject: '" + tutor.subject
   h6.mt-5= "Availability: '" + tutor.availability
   h6.mt-5= "Rating: '" + tutor.rate
   a.btn.btn-primary(href='/appointment-form/' style='margin-left: 25px') Schedule Appointment
