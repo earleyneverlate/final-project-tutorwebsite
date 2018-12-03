@@ -15,7 +15,7 @@ exports.alltutors = function (req, res){
     if (err) {
       res.render('error', {message: "Uh oh! No tutors were retrieved."});
     } else {
-      res.render('main-tutor-view', {title:"Find Tutors", tutors:tutor});
+      res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), tutors:tutor});
     }
   });
 };
@@ -35,7 +35,7 @@ exports.tutorindex = function (req, res) {
 exports.viewtutor = function (req, res) {
   TutorView.findById(req.params.tutor_id, function (err, tutor) {
     if (err) {
-      res.render('error', {message: "Oops! No book tutor found."});
+      res.render('error', {message: "Oops! No tutor found."});
     } else {
       res.render('tutor-detail', {tutor: tutor});
     }
@@ -45,17 +45,18 @@ exports.viewtutor = function (req, res) {
 //Function to add new tutor to database
 exports.addtutor = function (req, res) {
     var tutorView = new TutorView();
-    tutorView.name = req.body.name;
+    tutorView.user = req.params.tutor_id;
     tutorView.location = req.body.location;
     tutorView.grade = req.body.grade;
     tutorView.subject = req.body.subject;
     tutorView.availability = req.body.availability;
 
-    TutorView.save(function (err, tutorView) {
+    tutorView.save(function (err, tutorView) {
       if (err) {
         res.render('error', {message: err});
       } else {
-        res.render('error', {message: "Tutor Added!"});
+        req.flash('message', 'Profile created! Find students below.');
+        res.redirect('/student/view');
       }
     });
 };

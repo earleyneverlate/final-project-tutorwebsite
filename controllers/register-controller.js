@@ -43,15 +43,17 @@ exports.adduser = function (req, res) {
     register.last = req.body.last;
     register.username = req.body.username;
     register.email = req.body.email;
+    register.role = req.body.role;
     register.password= req.body.password;
     register.confirm = req.body.confirm;
 
     register.save(function (err, register) {
       if (err) {
         res.render('error', {message: err});
-      } else {
-        req.flash('message', 'You are registered! Login below.');
-        res.redirect('./login');
+      } else if(register.role === "tutor") {
+        res.redirect('/tutor/new/' +register._id);
+      } else if(register.role === "student") {
+        res.redirect('/student/new/' +register._id);
       }
     });
 };

@@ -11,7 +11,13 @@ exports.newstudent = function (req, res){
 
 //Function to display page with list of all students
 exports.allstudents = function (req, res){
-  res.render('main-student-view', {title:"Find Students", student:{}});
+  StudentView.get(function (err, student) {
+    if (err) {
+      res.render('error', {message: "Uh oh! No students were retrieved."});
+    } else {
+      res.render('main-student-view', {title:"Find Students", message: req.flash('message'), students:student});
+    }
+  });
 };
 
 //Function to handle index
@@ -29,7 +35,7 @@ exports.studentindex = function (req, res) {
 exports.viewstudent = function (req, res) {
   StudentView.findById(req.params.student_id, function (err, student) {
     if (err) {
-      res.render('error', {message: "Oops! No book student found."});
+      res.render('error', {message: "Oops! No student found."});
     } else {
       res.render('student-detail', {student: student});
     }
@@ -39,7 +45,7 @@ exports.viewstudent = function (req, res) {
 //Function to add new student to database
 exports.addstudent = function (req, res) {
     var studentView = new StudentView();
-    studentView.name = req.body.name;
+    studentView.user = req.params.student_id;
     studentView.location = req.body.location;
     studentView.grade = req.body.grade;
     studentView.subject = req.body.subject;
@@ -49,7 +55,8 @@ exports.addstudent = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else {
-        res.render('error', {message: "Error"});
+        req.flash('message', 'Profile created! Find tutors below.');
+        res.redirect('/tutor/view');
       }
     });
 };

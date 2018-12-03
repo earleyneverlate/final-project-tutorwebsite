@@ -4,30 +4,38 @@ block navelements
   li.nav-item
     a.nav-link(href='/tutor/view') Find Tutors
   li.nav-item
-    a.nav-link(href='/student/view') Find Students
+    a.nav-link(href='#') View Profile
   li.nav-item
-    a.nav-link(href='/tutor/new') Create Tutor Profile
-  li.nav-item
-    a.nav-link(href='/student/new') Create Student Profile
+    a.nav-link(href='#') View Appointments
   li.nav-item
     a.nav-link(href='/login') Logout
 
 block content
-  h2.mt-5=title
-  table.table.table-striped.table-bordered(style='margin-top: 1.5em')
-    thead
-      tr
-        th(scope='col') Name
-        th(scope='col') Location
-        th(scope='col') Grade
-        th(scope='col') Subject
-        th(scope='col') Availability
-    tbody
-      each tutor in tutors
+  head
+    style(type='text/css').
+      .login-text {
+      color: #f7be71;
+      margin-top: 2em;
+      font-size: 22px;
+      }
+
+  body
+    p.login-text.text-center= message
+    h2.mt-5=title
+    table.table.table-striped.table-bordered(style='margin-top: 1.5em')
+      thead
         tr
-          td
-            a(href='/tutor/view/' + tutor.id)= tutor.name
-          td=tutor.location
-          td=tutor.grade
-          td=tutor.subject
-          td=tutor.availability
+          th(scope='col') Tutor ID
+          th(scope='col') Location
+          th(scope='col') Grade
+          th(scope='col') Subject
+          th(scope='col') Availability
+      tbody
+        each tutor in tutors
+          tr
+            td
+              a(href='/tutor/view/' + tutor.id)= tutor.user
+            td=tutor.location
+            td=tutor.grade
+            td=tutor.subject
+            td=tutor.availability

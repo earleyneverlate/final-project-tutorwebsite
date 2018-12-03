@@ -15,15 +15,22 @@ router.get('/', function (req, res) {
 });
 
 //apppointment routes
-router.route('/appointment/new')
-    .get(appointmentController.newappointment)
-    .post(appointmentController.addappointment)
+router.route('/appointment/new/student/:student_id')
+    .get(appointmentController.newstudentappointment)
+    .post(appointmentController.addstudentappointment)
 
-router.route('/appointments/:user_id/view')
-    .get(appointmentController.viewappointment)
+router.route('/appointment/new/tutor/:tutor_id')
+    .get(appointmentController.newtutorappointment)
+    .post(appointmentController.addtutorappointment)
+
+router.route('/appointments/view/student/:student_id')
+    .get(appointmentController.viewstudentappointment)
+
+router.route('/appointments/view/tutor/:tutor_id')
+    .get(appointmentController.viewtutorappointment)
 
 //tutor routes
-router.route('/tutor/new')
+router.route('/tutor/new/:tutor_id')
     .get(tutorviewController.newtutor)
     .post(tutorviewController.addtutor)
 
@@ -34,7 +41,7 @@ router.route('/tutor/view/:tutor_id')
     .get(tutorviewController.viewtutor)
 
 //student routes
-router.route('/student/new')
+router.route('/student/new/:student_id')
     .get(studentviewController.newstudent)
     .post(studentviewController.addstudent)
 

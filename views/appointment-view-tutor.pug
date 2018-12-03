@@ -2,25 +2,26 @@ extends layout.pug
 
 block navelements
   li.nav-item
-    a.nav-link(href='#') Find Tutors
+    a.nav-link(href='/student/view') Find Students
   li.nav-item
-    a.nav-link(href='#') Find Students
+    a.nav-link(href='#') View Profile
+  li.nav-item
+    a.nav-link(href='/login') Logout
 
 block content
   h2.mt-5=title
   table.table.table-striped.table-bordered(style='margin-top: 1.5em')
     thead
       tr
-        th(scope='col') Tutor Name
-        th(scope='col') Student Name
+        th(scope='col') Tutor ID
+        th(scope='col') Student ID
         th(scope='col') Date
         th(scope='col') Time
         th(scope='col') Message
     tbody
       each appointment in appointments
         tr
-          td
-            a(href='#')= appointment.tutor
+          td=appointment.tutor
           td=appointment.student
           td=appointment.appointmentDate
           td=appointment.appointmentTime
