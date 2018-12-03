@@ -19,7 +19,8 @@ block content
     tbody
       each tutor in tutors
         tr
-          td=tutor.name
+          td
+            a(href='/tutor/view/' + tutor.id)= tutor.name
           td=tutor.location
           td=tutor.grade
           td=tutor.subject
