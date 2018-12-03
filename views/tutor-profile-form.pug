@@ -21,6 +21,19 @@ block content
           option(value='11-12') 11th-12th
           option(value='9-12') 9th-12th
       .form-group
+        label(for='subject') Tutor Subject
+        select#tutorSubject.form-control(name="subject", value=tutor.subject)
+          option(selected='') Select subject...
+          option(value='english') English
+          option(value='history') History
+          option(value='calc') Calculus
+          option(value='geo') Geography
+          option(value='algebra') Algebra
+          option(value='cs') Computer Science
+          option(value='bio') Biology
+          option(value='chem') Chemistry
+          option(value='phys') Physics
+      .form-group
          input#tutorAvailability.form-control(type='checkbox' name="monday" value=tutor.availability)
          label(for='monday') Monday
          input#tutorAvailability.form-control(type='checkbox' name="tuesday" value=tutor.availability)

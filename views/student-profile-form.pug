@@ -18,6 +18,19 @@ block content
           option(value='11') 11th
           option(value='12') 12th
       .form-group
+        label(for='subject') Subject
+        select#studentSubject.form-control(name="subject", value=student.subject)
+          option(selected='') Select subject...
+          option(value='english') English
+          option(value='history') History
+          option(value='calc') Calculus
+          option(value='geo') Geography
+          option(value='algebra') Algebra
+          option(value='cs') Computer Science
+          option(value='bio') Biology
+          option(value='chem') Chemistry
+          option(value='phys') Physics
+      .form-group
         input#studentAvailability.form-control(type='checkbox' name="monday" value=student.availability)
         label(for='monday') Monday
         input#studentAvailability.form-control(type='checkbox' name="tuesday" value=student.availability)
