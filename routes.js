@@ -34,6 +34,10 @@ router.route('/student/new')
 router.route('/student/view')
     .get(studentviewController.allstudents)
 
+//register routes
+router.route('register/new')
+    .get(registerController.newusers)
+
 //appointment API routes
 router.route('/api/appointment')
     .get(appointmentController.index)
