@@ -14,18 +14,22 @@ exports.newtutorappointment = function (req, res) {
 };
 
 //Function to display all appointments
-exports.viewappointment = function (req, res){
-  ScheduleAppointment.get(function (err, appointment) {
-    if (err) {
-      res.render('error', {message: "Uh oh! No appointments were retrieved."});
-    } else {
-      res.render('appointment-view', {title:"View All Appointments", appointments:appointment});
-    }
-  });
+exports.viewstudentappointment = function (req, res){
+
+  ScheduleAppointment.find({ student: req.params.student_id })
+    .exec(function (err, appointment) {
+      if (err) {
+        res.render('error', {message: err});
+      } else if (!appointment) {
+        res.render('error', {message: "No users found!"});
+      } else {
+        res.render('appointment-view', {title:"View All Appointments", appointments:appointment});
+      }
+    });
 };
 
-//Function to add new appointment to database
-exports.addappointment = function (req, res) {
+//Function to add new student appointment to database
+exports.addstudentappointment = function (req, res) {
     var scheduleAppointment = new ScheduleAppointment();
     scheduleAppointment.tutor = req.body.tutor;
     scheduleAppointment.student = req.body.student;
@@ -37,10 +41,28 @@ exports.addappointment = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else {
-        res.render('error', {message: "Appointment scheduled!"});
+        res.redirect('/appointments/view/student/' + scheduleAppointment.student);;
       }
     });
 };
+
+//Function to add new tutor appointment to database
+// exports.addappointment = function (req, res) {
+//     var scheduleAppointment = new ScheduleAppointment();
+//     scheduleAppointment.tutor = req.body.tutor;
+//     scheduleAppointment.student = req.body.student;
+//     scheduleAppointment.appointmentDate = req.body.appointmentDate;
+//     scheduleAppointment.appointmentTime = req.body.appointmentTime;
+//     scheduleAppointment.message = req.body.message;
+//
+//     scheduleAppointment.save(function (err, scheduleAppointment) {
+//       if (err) {
+//         res.render('error', {message: err});
+//       } else {
+//         res.redirect('./login');;
+//       }
+//     });
+// };
 
 // ############## API ROUTE FUNCTIONS #####################
 //Function to handle index

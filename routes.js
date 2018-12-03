@@ -17,14 +17,14 @@ router.get('/', function (req, res) {
 //apppointment routes
 router.route('/appointment/new/student/:student_id')
     .get(appointmentController.newstudentappointment)
-    .post(appointmentController.addappointment)
+    .post(appointmentController.addstudentappointment)
 
 router.route('/appointment/new/tutor/:tutor_id')
     .get(appointmentController.newtutorappointment)
-    .post(appointmentController.addappointment)
+    // .post(appointmentController.addappointment)
 
-router.route('/appointments/:user_id/view')
-    .get(appointmentController.viewappointment)
+router.route('/appointments/view/student/:student_id')
+    .get(appointmentController.viewstudentappointment)
 
 //tutor routes
 router.route('/tutor/new/:tutor_id')
