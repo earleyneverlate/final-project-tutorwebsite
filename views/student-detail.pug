@@ -2,35 +2,27 @@ extends layout.pug
 
 block navelements
   li.nav-item
-    a.nav-link(href='/tutor/view') Find Tutors
-  li.nav-item
     a.nav-link(href='/student/view') Find Students
   li.nav-item
-    a.nav-link(href='/tutor/new') Create Tutor Profile
-  li.nav-item
-    a.nav-link(href='/student/new') Create Student Profile
+    a.nav-link(href='#') View Profile
   li.nav-item
     a.nav-link(href='/login') Logout
 
 block content
   .container
   .row
-    .col-md-5.toppad.pull-right.col-md-offset-3
-      a(href='/views/student-profile-form') Edit Profile
-      a(href='/views/delete') Delete Profile
-      br
     .col-xs-12.col-sm-12.col-md-6.col-lg-6.col-xs-offset-0.col-sm-offset-0.col-md-offset-3.col-lg-offset-3.toppad
       .panel.panel-info
         .panel-heading
-          h3.panel-title Student Profile
+          h3.panel-title Student Details
         .panel-body
           .row
             .col-md-9.col-lg-9
               table.table.table-student-information
                 tbody
                   tr
-                    td Name:
-                    td=student.name
+                    td Student ID:
+                    td=student.user
                   tr
                     td Location:
                     td=student.location
@@ -46,3 +38,4 @@ block content
                     td Availability:
                     td=student.availability
                   tr
+            a.btn.btn-primary(href='#') Schedule Appointment
