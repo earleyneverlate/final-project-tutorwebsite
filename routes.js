@@ -21,10 +21,13 @@ router.route('/appointment/new/student/:student_id')
 
 router.route('/appointment/new/tutor/:tutor_id')
     .get(appointmentController.newtutorappointment)
-    // .post(appointmentController.addappointment)
+    .post(appointmentController.addtutorappointment)
 
 router.route('/appointments/view/student/:student_id')
     .get(appointmentController.viewstudentappointment)
+
+router.route('/appointments/view/tutor/:tutor_id')
+    .get(appointmentController.viewtutorappointment)
 
 //tutor routes
 router.route('/tutor/new/:tutor_id')

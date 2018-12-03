@@ -15,13 +15,25 @@ exports.newtutorappointment = function (req, res) {
 
 //Function to display all appointments
 exports.viewstudentappointment = function (req, res){
-
   ScheduleAppointment.find({ student: req.params.student_id })
     .exec(function (err, appointment) {
       if (err) {
         res.render('error', {message: err});
       } else if (!appointment) {
-        res.render('error', {message: "No users found!"});
+        res.render('error', {message: "No appointments found!"});
+      } else {
+        res.render('appointment-view', {title:"View All Appointments", appointments:appointment});
+      }
+    });
+};
+
+exports.viewtutorappointment = function (req, res){
+  ScheduleAppointment.find({ tutor: req.params.tutor_id })
+    .exec(function (err, appointment) {
+      if (err) {
+        res.render('error', {message: err});
+      } else if (!appointment) {
+        res.render('error', {message: "No appointments found!"});
       } else {
         res.render('appointment-view', {title:"View All Appointments", appointments:appointment});
       }
@@ -41,28 +53,28 @@ exports.addstudentappointment = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else {
-        res.redirect('/appointments/view/student/' + scheduleAppointment.student);;
+        res.redirect('/appointments/view/tutor/' + scheduleAppointment.tutor);
       }
     });
 };
 
 //Function to add new tutor appointment to database
-// exports.addappointment = function (req, res) {
-//     var scheduleAppointment = new ScheduleAppointment();
-//     scheduleAppointment.tutor = req.body.tutor;
-//     scheduleAppointment.student = req.body.student;
-//     scheduleAppointment.appointmentDate = req.body.appointmentDate;
-//     scheduleAppointment.appointmentTime = req.body.appointmentTime;
-//     scheduleAppointment.message = req.body.message;
-//
-//     scheduleAppointment.save(function (err, scheduleAppointment) {
-//       if (err) {
-//         res.render('error', {message: err});
-//       } else {
-//         res.redirect('./login');;
-//       }
-//     });
-// };
+exports.addtutorappointment = function (req, res) {
+    var scheduleAppointment = new ScheduleAppointment();
+    scheduleAppointment.tutor = req.body.tutor;
+    scheduleAppointment.student = req.body.student;
+    scheduleAppointment.appointmentDate = req.body.appointmentDate;
+    scheduleAppointment.appointmentTime = req.body.appointmentTime;
+    scheduleAppointment.message = req.body.message;
+
+    scheduleAppointment.save(function (err, scheduleAppointment) {
+      if (err) {
+        res.render('error', {message: err});
+      } else {
+        res.redirect('/appointments/view/student/' + scheduleAppointment.student);
+      }
+    });
+};
 
 // ############## API ROUTE FUNCTIONS #####################
 //Function to handle index

@@ -19,8 +19,7 @@ block content
     tbody
       each appointment in appointments
         tr
-          td
-            a(href='#')= appointment.tutor
+          td=appointment.tutor
           td=appointment.student
           td=appointment.appointmentDate
           td=appointment.appointmentTime
