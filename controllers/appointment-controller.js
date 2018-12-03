@@ -5,7 +5,7 @@
 ScheduleAppointment = require('../models/appointment-model');
 
 // ############## HTML ROUTE FUNCTIONS #####################
-//Function to display form page when 'Add Book' is clicked
+//Function to display form page when 'Schedule Appointment' is clicked
 exports.newappointment = function (req, res) {
   res.render('appointment-form', {title: "Schedule Appointment", command: "Schedule Appointment", appointment: {}});
 };
