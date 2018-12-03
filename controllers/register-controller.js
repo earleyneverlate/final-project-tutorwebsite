@@ -43,7 +43,7 @@ exports.adduser = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else {
-        res.render('error', {message: "Registered!"});
+        res.render('login', {message: "You are registered! Please log in below."});
       }
     });
 };

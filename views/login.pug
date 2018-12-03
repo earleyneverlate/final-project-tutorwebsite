@@ -24,9 +24,13 @@ block content
       font-size: 15px;
       font-weight: bold;
       }
+      .login-text {
+      color: #f7be71;
+      }
   body
     .login-form
       form(action='/examples/actions/confirmation.php', method='post')
+        p.login-text.text-center= message
         h2.text-center Find my Tutor
         .form-group
           input.form-control(type='text', placeholder='Username', required='required')
