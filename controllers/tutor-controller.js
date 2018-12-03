@@ -11,7 +11,13 @@ exports.newtutor = function (req, res){
 
 //Function to display main-tutor-view
 exports.alltutors = function (req, res){
-  res.render('main-tutor-view', {title:"Find Tutors", tutor:{}});
+  TutorView.get(function (err, tutor) {
+    if (err) {
+      res.render('error', {message: "Uh oh! No tutors were retrieved."});
+    } else {
+      res.render('main-tutor-view', {title:"Find Tutors", tutors:tutor});
+    }
+  });
 };
 
 //Function to handle index
@@ -20,7 +26,7 @@ exports.tutorindex = function (req, res) {
     if (err) {
       res.render('error', {message: "Oops! No tutor was found."});
     } else {
-      res.render('tutor-detail', {tutor: tutor});
+      res.render('tutor-detail', {tutors: tutor});
     }
   });
 };
