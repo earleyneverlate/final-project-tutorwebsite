@@ -37,6 +37,11 @@ router.route('/student/new')
 router.route('/student/view')
     .get(studentviewController.allstudents)
 
+
+//register routes
+router.route('register/new')
+    .get(registerController.newusers)
+
 router.route('/student/view/:student_id')
     .get(studentviewController.viewstudent)
 
