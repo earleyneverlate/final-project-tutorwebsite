@@ -16,16 +16,22 @@ exports.viewregister = function (req, res){
 
 //Function to login
 exports.login = function (req, res) {
-    var username = req.body.username,
-        password = req.body.password;
+    var login = new Register();
+    login.username = req.body.username,
+    login.password = req.body.password;
 
-    Register.findOne({ username: username })
+    Register.findOne({ username: login.username })
       .exec(function (err, user) {
         if (err) {
-          return callback(err)
+          res.render('error', {message: err});
         } else if (!user) {
           req.flash('message', 'No user found! Please register below.');
           res.redirect('./register');
+        } else if (user.password === login.password) {
+          res.redirect('./tutor/view');
+        } else {
+          req.flash('message', 'Incorrect username or password! Try again.');
+          res.redirect('./login');
         }
       });
 }
