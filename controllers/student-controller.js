@@ -11,7 +11,13 @@ exports.newstudent = function (req, res){
 
 //Function to display page with list of all students
 exports.allstudents = function (req, res){
-  res.render('main-student-view', {title:"Find Students", student:{}});
+  StudentView.get(function (err, student) {
+    if (err) {
+      res.render('error', {message: "Uh oh! No students were retrieved."});
+    } else {
+      res.render('main-student-view', {title:"Find Students", students:student});
+    }
+  });
 };
 
 //Function to handle index
@@ -29,7 +35,7 @@ exports.studentindex = function (req, res) {
 exports.viewstudent = function (req, res) {
   StudentView.findById(req.params.student_id, function (err, student) {
     if (err) {
-      res.render('error', {message: "Oops! No book student found."});
+      res.render('error', {message: "Oops! No student found."});
     } else {
       res.render('student-detail', {student: student});
     }

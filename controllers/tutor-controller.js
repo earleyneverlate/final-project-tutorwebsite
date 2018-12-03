@@ -35,7 +35,7 @@ exports.tutorindex = function (req, res) {
 exports.viewtutor = function (req, res) {
   TutorView.findById(req.params.tutor_id, function (err, tutor) {
     if (err) {
-      res.render('error', {message: "Oops! No book tutor found."});
+      res.render('error', {message: "Oops! No tutor found."});
     } else {
       res.render('tutor-detail', {tutor: tutor});
     }

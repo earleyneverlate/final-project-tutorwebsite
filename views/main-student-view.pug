@@ -23,10 +23,11 @@ block content
         th(scope='col') Subject
         th(scope='col') Availability
     tbody
-      tr
-        td
-          a(href='#') student.name
-        td=student.location
-        td=student.grade
-        td=student.subject
-        td=student.availability
+      each student in students
+        tr
+          td
+            a(href='/student/view/' + student.id)= student.name
+          td=student.location
+          td=student.grade
+          td=student.subject
+          td=student.availability
