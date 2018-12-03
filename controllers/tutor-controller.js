@@ -9,6 +9,12 @@ exports.newtutor = function (req, res){
   res.render('tutor-profile-form', {title:"New Tutor Profile", tutor:{}});
 };
 
+//Function to display main-tutor-view
+exports.alltutors = function (req, res){
+  res.render('main-tutor-view', {title:"Find Tutors", tutor:{}});
+};
+
+
 //Function to add new tutor to database
 exports.addtutor = function (req, res) {
     var tutorView = new TutorView();
