@@ -6,6 +6,8 @@ block navelements
   li.nav-item
     a.nav-link(href='#') View Profile
   li.nav-item
+    a.nav-link(href='#') View Appointments
+  li.nav-item
     a.nav-link(href='/login') Logout
 
 block content
@@ -41,5 +43,5 @@ block content
                       td Rating:
                       td=tutor.rate
                     tr
-                a.btn.btn-primary(href='#' style='margin-right: 1.5em') Schedule Appointment
+                a.btn.btn-primary(href='../../appointment/new' style='margin-right: 1.5em') Schedule Appointment
                 a.btn.btn-primary(href='#') Rate Tutor

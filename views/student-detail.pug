@@ -6,6 +6,8 @@ block navelements
   li.nav-item
     a.nav-link(href='#') View Profile
   li.nav-item
+    a.nav-link(href='#') View Appointments
+  li.nav-item
     a.nav-link(href='/login') Logout
 
 block content
@@ -38,4 +40,4 @@ block content
                     td Availability:
                     td=student.availability
                   tr
-            a.btn.btn-primary(href='#') Schedule Appointment
+            a.btn.btn-primary(href='../../appointment/new') Schedule Appointment
