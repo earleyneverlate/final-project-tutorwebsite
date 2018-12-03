@@ -14,7 +14,7 @@ html(lang='en')
       .form-control{
       height: 40px;
       box-shadow: none;
-      color: #969fa4;
+      color: #f7be71;
       }
       .form-control:focus{
       border-color: #5cb85c;
@@ -37,7 +37,7 @@ html(lang='en')
       content: "";
       height: 2px;
       width: 30%;
-      background: #d4d4d4;
+      background: #2e3192;
       position: absolute;
       top: 50%;
       z-index: 2;
@@ -97,7 +97,7 @@ html(lang='en')
     .signup-form
       form(action='/examples/actions/confirmation.php', method='post')
         h2 Register
-        p.hint-text Create your account. It's free and only takes a minute.
+        p.hint-text Create your account for Find my Tutor.
         .form-group
           .row
             .col-xs-6
@@ -111,14 +111,4 @@ html(lang='en')
         .form-group
           input.form-control(type='password', name='confirm_password', placeholder='Confirm Password', required='required')
         .form-group
-          label.checkbox-inline
-            input(type='checkbox', required='required')
-            |  I accept the 
-            a(href='#') Terms of Use
-            |  & 
-            a(href='#') Privacy Policy
-        .form-group
           button.btn.btn-success.btn-lg.btn-block(type='submit') Register Now
-      .text-center
-        | Already have an account? 
-        a(href='#') Sign in
