@@ -1,5 +1,6 @@
-doctype html
-html(lang='en')
+extends layout.pug
+
+block content
   head
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
@@ -35,6 +36,6 @@ html(lang='en')
         .form-group
           input.form-control(type='password', placeholder='Password', required='required')
         .form-group
-          button.btn.btn-primary.btn-block(type='submit') Login 
+          button.btn.btn-primary.btn-block(type='submit') Login
       p.text-center
         a(href='#') Create an Account

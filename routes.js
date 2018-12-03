@@ -9,7 +9,6 @@ var studentviewController = require('./controllers/student-controller');
 var tutorviewController = require('./controllers/tutor-controller');
 var registerController = require('./controllers/register-controller');
 
-
 //Default API response
 router.get('/', function (req, res) {
     res.render('index');
@@ -19,6 +18,9 @@ router.get('/', function (req, res) {
 router.route('/appointment/new')
     .get(appointmentController.newappointment)
     .post(appointmentController.addappointment)
+
+router.route('/appointments/:user_id/view')
+    .get(appointmentController.viewappointment)
 
 //tutor routes
 router.route('/tutor/new')
@@ -42,11 +44,14 @@ router.route('/student/view')
 router.route('/student/view/:student_id')
     .get(studentviewController.viewstudent)
 
-//register routes
-router.route('register/new')
-    .get(registerController.addnewuser)
+//login routes
+router.route('/login')
+    .get(registerController.viewlogin)
 
-// ============ API ROUTES ============== //
+//register routes
+router.route('/register')
+    .get(registerController.viewregister)
+
 //appointment API routes
 router.route('/api/appointment')
     .get(appointmentController.index)

@@ -10,6 +10,17 @@ exports.newappointment = function (req, res) {
   res.render('appointment-form', {title: "Schedule Appointment", command: "Schedule Appointment", appointment: {}});
 };
 
+//Function to display all appointments
+exports.viewappointment = function (req, res){
+  ScheduleAppointment.get(function (err, appointments) {
+    if (err) {
+      res.render('error', {message: "Uh oh! No appointments were retrieved."});
+    } else {
+      res.render('appointment-view', {title:"View All Appointments", appointments:appointment});
+    }
+  });
+};
+
 //Function to add new appointment to database
 exports.addappointment = function (req, res) {
     var scheduleAppointment = new ScheduleAppointment();

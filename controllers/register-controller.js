@@ -1,12 +1,37 @@
-//File Name: register-controller.js - This file contains the functions for the
-//api routes for scheduling appointments
+//File Name: register-controller.js
 
 //Imports
-ScheduleAppointment = require('../models/register-model');
+RegisterView = require('../models/register-model');
 
-//Function to add new appointment to database
-exports.addnewuser = function (req, res) {
-    var register = new Registered();
+// ############## HTML ROUTE FUNCTIONS #####################
+//Function to display register view
+exports.viewlogin = function (req, res){
+  res.render('login', {title:"Login", login:{}});
+};
+
+//Function to display register view
+exports.viewregister = function (req, res){
+  res.render('register', {title:"New User", newusers:{}});
+};
+
+//Function to login
+exports.login = function (req, res) {
+    var login = new RegisterView();
+    login.username = req.body.username;
+    login.password = req.body.password;
+
+    login.save(function (err, login) {
+      if (err) {
+        res.render('error', {message: err});
+      } else {
+        res.render('error', {message: "Login!"});
+      }
+    });
+};
+
+//Function to add new registered users to database
+exports.adduser = function (req, res) {
+    var register = new RegisterView();
     register.first = req.body.first;
     register.last = req.body.last;
     register.email = req.body.email;
