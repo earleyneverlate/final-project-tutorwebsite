@@ -1,31 +1,26 @@
 extends layout.pug
 
-block links   
-	link(rel='stylesheet' href='https://formden.com/static/cdn/bootstrap-iso.css')
-  link(rel='stylesheet' href='https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css')
-
-
 block navelements
   li.nav-item
-    a.nav-link(href='#') Find Tutor
+    a.nav-link(href='#') Find Tutors
   li.nav-item
-    a.nav-link(href='#') Find Student
+    a.nav-link(href='#') Find Students
 
-  	table.table 
-  		thead
-  			tr	
-  				th(scope='col') Name
-  				th(scope='col') Location
-  				th(scope='col') Grade
-  				th(scope='col') Subject
-  				th(scope='col') Availability 
-  		tbody
-  			Find Students to Tutor
-  				tr
-  					td
-  						a(href='#')=student.name
-  					td=student.location
-  					td=student.grade
-  					td=student.subject
-  					td=student.availability 
-
+block content
+  h2.mt-5=title
+  table.table.table-striped.table-bordered(style='margin-top: 1.5em')
+    thead
+      tr
+        th(scope='col') Name
+        th(scope='col') Location
+        th(scope='col') Grade
+        th(scope='col') Subject
+        th(scope='col') Availability
+    tbody
+      tr
+        td
+          a(href='#') student.name
+        td=student.location
+        td=student.grade
+        td=student.subject
+        td=student.availability
