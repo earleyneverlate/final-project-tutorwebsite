@@ -1,5 +1,16 @@
 extends layout.pug
 
+block navelements
+  li.nav-item
+    a.nav-link(href='./register') Sign Up
+  li.nav-item
+    a.nav-link(href='./login') Login
+
 block content
-  h2.mt-5 Tutor Website
-    
+  .jumbotron(style='margin-top: 2.5em')
+    .container
+      h1 Welcome to Find my Tutor!
+      p
+        | This website connects tutors and students! Ready to get started? Sign up below!
+      p
+        a.btn.btn-primary.btn-lg(href='./register', role='button') Sign Up »
