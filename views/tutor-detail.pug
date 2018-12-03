@@ -7,14 +7,40 @@ block navelements
     a.nav-link(href='#') Find Students
 
 block content
-  h1.mt-5= tutor.name
-  a.btn.btn-primary(href='#' style='margin-left: 25px') Update Profile
-  form(action='#' method="POST")
-    button.btn.btn-delete(type='submit') Delete Profile
-  h6.mt-5= "Name: '" + tutor.name
-  h6.mt-5= "Location: '" + tutor.location
-  h6.mt-5= "Tutor Grade Level: '" + tutor.grade
-  h6.mt-5= "Tutor Subject: '" + tutor.subject
-  h6.mt-5= "Availability: '" + tutor.availability
-  h6.mt-5= "Rating: '" + tutor.rate
-  a.btn.btn-primary(href='/appointment-form/' style='margin-left: 25px') Schedule Appointment
+  .container
+    .row
+      .col-md-5.toppad.pull-right.col-md-offset-3
+        a(href='/views/tutor-profile-form') Edit Profile
+        a(href='/views/delete') Delete Profile
+        br
+      .col-xs-12.col-sm-12.col-md-6.col-lg-6.col-xs-offset-0.col-sm-offset-0.col-md-offset-3.col-lg-offset-3.toppad
+        .panel.panel-info
+          .panel-heading
+            h3.panel-title Tutor Profile
+          .panel-body
+            .row
+              .col-md-9.col-lg-9
+                table.table.table-tutor-information
+                  tbody
+                    tr
+                      td Name:
+                      td=tutor.name
+                    tr
+                      td Location:
+                      td=tutor.location
+                    tr
+                      td Grade:
+                      td=tutor.grade
+                    tr
+                    tr
+                      td Subject:
+                      td=tutor.subject
+                    tr
+                      td Availability:
+                      td=tutor.availability
+                    tr
+                    tr
+                      td Rating:
+                      td=tutor.rate
+                    tr
+                a.btn.btn-primary(href='#') Rate Me
