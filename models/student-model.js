@@ -1,4 +1,4 @@
-//File Name: main-student-view-model.js - This file defines the database schema for viewing students 
+//File Name: main-student-view-model.js - This file defines the database schema for viewing students
 
 //Imports
 let mongoose = require('mongoose');
@@ -6,9 +6,10 @@ let mongoose = require('mongoose');
 //Database Schema
 var studentViewSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  location: { type: String, required: true },
   grade: { type: String, required: true },
-  subject: { type: String, required: true }, 
-  availability: { type: String, required: true } 
+  subject: { type: String, required: true },
+  availability: { type: String, required: true }
 });
 
 //Export view student model

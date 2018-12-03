@@ -56,7 +56,7 @@ exports.view = function (req, res) {
     });
 };
 
-//Function to tutor view
+//Function to add tutor
 exports.new = function (req, res) {
     var tutorView = new tutorView();
     tutorView.name = req.body.name;
