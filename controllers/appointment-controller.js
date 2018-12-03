@@ -22,7 +22,7 @@ exports.viewstudentappointment = function (req, res){
       } else if (!appointment) {
         res.render('error', {message: "No appointments found!"});
       } else {
-        res.render('appointment-view', {title:"View All Appointments", appointments:appointment});
+        res.render('appointment-view-student', {title:"View All Appointments", appointments:appointment});
       }
     });
 };
@@ -35,7 +35,7 @@ exports.viewtutorappointment = function (req, res){
       } else if (!appointment) {
         res.render('error', {message: "No appointments found!"});
       } else {
-        res.render('appointment-view', {title:"View All Appointments", appointments:appointment});
+        res.render('appointment-view-tutor', {title:"View All Appointments", appointments:appointment});
       }
     });
 };
