@@ -6,13 +6,9 @@ block links
 
 block navelements
   li.nav-item
-    a.nav-link(href='/tutor/view') Find Tutors
-  li.nav-item
     a.nav-link(href='/student/view') Find Students
   li.nav-item
-    a.nav-link(href='/tutor/new') Create Tutor Profile
-  li.nav-item
-    a.nav-link(href='/student/new') Create Student Profile
+    a.nav-link(href='#') View Profile
   li.nav-item
       a.nav-link(href='/login') Logout
 
@@ -28,12 +24,6 @@ block content
       .row
         .col-md-6.col-sm-6.col-xs-12
           form(method='post')
-            .form-group
-              label.control-label.requiredField(for='name')
-                | Name
-                span.asteriskField
-                  | *
-              input#name.form-control(name='name', placeholder='Enter Name', type='text', value=tutor.name)
             .form-group
               label.control-label.requiredField(for='location')
                 | Location
