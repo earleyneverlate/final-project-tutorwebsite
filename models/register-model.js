@@ -5,6 +5,7 @@ let mongoose = require('mongoose');
 
 //Database Schema
 var registerSchema = new mongoose.Schema({
+  username: { type: String, required: true },
   first: { type: String, required: true },
   last: { type: String, required: true },
   username: { type: String, unique:true, required: true },
