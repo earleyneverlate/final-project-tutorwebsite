@@ -1,12 +1,16 @@
 //File Name: student-controller.js
 StudentView = require('../models/student-model');
 
-exports.newstudentview = function (req, res){
-  res.render('student-view-model', {title:"View Students", command:"View Students", view:{}});
+//Imports
+
+// ############## HTML ROUTE FUNCTIONS #####################
+//Function to display student-profile-form
+exports.newstudent = function (req, res){
+  res.render('student-profile-form', {title:"New Student Profile", student:{}});
 };
 
 //Function to add new student to database
-exports.addstudentview = function (req, res) {
+exports.addstudent = function (req, res) {
     var studentView = new StudentView();
     studentView.name = req.body.name;
     studentView.location = req.body.location;
