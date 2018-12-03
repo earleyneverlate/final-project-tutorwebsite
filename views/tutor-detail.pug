@@ -4,11 +4,7 @@ block navelements
   li.nav-item
     a.nav-link(href='/tutor/view') Find Tutors
   li.nav-item
-    a.nav-link(href='/student/view') Find Students
-  li.nav-item
-    a.nav-link(href='/tutor/new') Create Tutor Profile
-  li.nav-item
-    a.nav-link(href='/student/new') Create Student Profile
+    a.nav-link(href='#') View Profile
   li.nav-item
     a.nav-link(href='/login') Logout
 
@@ -49,4 +45,5 @@ block content
                       td Rating:
                       td=tutor.rate
                     tr
-                a.btn.btn-primary(href='#') Rate Me
+                a.btn.btn-primary(href='#' style='margin-right: 1.5em') Schedule Appointment
+                a.btn.btn-primary(href='#') Rate Tutor

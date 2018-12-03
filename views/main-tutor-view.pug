@@ -32,7 +32,7 @@ block content
         each tutor in tutors
           tr
             td
-              a(href='/tutor/view/' + tutor.id)= tutor.name
+              a(href='/tutor/view/' + tutor.id)= tutor.user
             td=tutor.location
             td=tutor.grade
             td=tutor.subject
