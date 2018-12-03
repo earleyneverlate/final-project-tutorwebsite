@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+  h1.mt-5= student.name
+    a.btn.btn-primary(href='/profiles/studentprofiles/' + student.id + '/update' style='margin-left: 25px') Update Profile
+    form(action='/profiles/studentprofiles/' + student.id + '/delete' method="POST")
+      button.btn.btn-delete(type='submit') Delete Profile
+  h6.mt-5= "Name: '" + student.name
+  h6.mt-5= "Location: '" + student.location
+  h6.mt-5= "Grade Level: '" + student.grade
+  h6.mt-5= "Subject: '" + student.subject
+  h6.mt-5= "Availability: '" + student.availability
+  a.btn.btn-primary(href='/appointment-form/' style='margin-left: 25px') Schedule Appointment
