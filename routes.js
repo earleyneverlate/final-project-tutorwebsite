@@ -28,6 +28,8 @@ router.route('/student/new')
     .get(studentviewController.newstudent)
     .post(studentviewController.addstudent)
 
+router.route('/student/view')
+    .get(studentviewController.allstudents)
 
 //appointment API routes
 router.route('/api/appointment')
