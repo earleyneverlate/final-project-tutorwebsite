@@ -4,12 +4,12 @@
 ScheduleAppointment = require('../models/register-model');
 
 // ############## HTML ROUTE FUNCTIONS #####################
-//Function to display student-profile-form
+//Function to display register view
 exports.newusers = function (req, res){
   res.render('register-form', {title:"New User", newusers:{}});
 };
 
-//Function to add new appointment to database
+//Function to add new registered users to database
 exports.newusers = function (req, res) {
     var register = new Registered();
     register.first = req.body.first;
