@@ -18,14 +18,16 @@ router.route('/appointment/new')
     .get(appointmentController.newappointment)
     .post(appointmentController.addappointment)
 
+//tutor routes
 router.route('/tutor/new')
     .get(tutorviewController.newtutor)
     .post(tutorviewController.addtutor)
 
-//student view routes
-router.route('student/view')
-	.get(studentviewController.newstudentview)
-	.post(studentviewController.addstudentview)
+//student routes
+router.route('/student/new')
+    .get(studentviewController.newstudent)
+    .post(studentviewController.addstudent)
+
 
 //appointment API routes
 router.route('/api/appointment')
