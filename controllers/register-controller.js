@@ -6,28 +6,29 @@ Register = require('../models/register-model');
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display login view
 exports.viewlogin = function (req, res){
-  res.render('login', {message: req.flash('successMessage'), login:{}});
+  res.render('login', {message: req.flash('message'), login:{}});
 };
 
 //Function to display register view
 exports.viewregister = function (req, res){
-  res.render('register', {title:"New User", register:{}});
+  res.render('register', {message: req.flash('message'), register:{}});
 };
 
 //Function to login
 exports.login = function (req, res) {
-    var login = new Register();
-    login.username = req.body.username;
-    login.password = req.body.password;
+    var username = req.body.username,
+        password = req.body.password;
 
-    login.save(function (err, login) {
-      if (err) {
-        res.render('error', {message: err});
-      } else {
-        res.render('error', {message: "Login!"});
-      }
-    });
-};
+    Register.findOne({ username: username })
+      .exec(function (err, user) {
+        if (err) {
+          return callback(err)
+        } else if (!user) {
+          req.flash('message', 'No user found! Please register below.');
+          res.redirect('./register');
+        }
+      });
+}
 
 //Function to add new users to database
 exports.adduser = function (req, res) {
@@ -43,7 +44,7 @@ exports.adduser = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else {
-        req.flash('successMessage', 'You are registered! Login below.');
+        req.flash('message', 'You are registered! Login below.');
         res.redirect('./login');
       }
     });

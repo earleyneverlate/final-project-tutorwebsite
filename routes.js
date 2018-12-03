@@ -47,6 +47,7 @@ router.route('/student/view/:student_id')
 //login routes
 router.route('/login')
     .get(registerController.viewlogin)
+    .post(registerController.login)
 
 //register routes
 router.route('/register')

@@ -90,10 +90,14 @@ block content
       .signup-form form a:hover{
       text-decoration: underline;
       }
+      .login-text {
+      color: #f7be71;
+      }
   body
     .signup-form
       form(method='post')
         h2 Register
+        p.login-text.text-center= message
         p.hint-text Create your account for Find my Tutor.
         .form-group
           input.form-control(type='text' name='first' placeholder='First Name' required='required' value=register.first)
