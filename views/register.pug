@@ -114,9 +114,18 @@ block content
         .form-group
           input.form-control(type='email' name='email' placeholder='Email' required='required' value=register.email)
         .form-group
-          input.form-control(type='password' name='password' placeholder='Password' required='required' value=register.password)
+          input#password.form-control(type='password' name='password' placeholder='Password' required='required' value=register.password)
         .form-group
-          input.form-control(type='password' name='confirm' placeholder='Confirm Password' required='required' value=register.confirm)
+          input#confirm.form-control(type='password' name='confirm' placeholder='Confirm Password' oninput='check(this)' required='required' value=register.confirm)
+          script(language='javascript' type='text/javascript').
+            function check(input) {
+            if (input.value != document.getElementById('password').value) {
+            input.setCustomValidity('Password Must be Matching.');
+            } else {
+            // input is valid -- reset the error message
+            input.setCustomValidity('');
+            }
+            }
         .form-group
           button.btn.btn-success.btn-lg.btn-block(type='submit') Register Now
       p.text-center
