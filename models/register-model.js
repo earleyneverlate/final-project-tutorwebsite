@@ -14,7 +14,7 @@ var registerSchema = new mongoose.Schema({
 });
 
 //Export register model
-let register = module.exports = mongoose.model('register', registerSchema);
+var Register = module.exports = mongoose.model('register', registerSchema);
 module.exports.get = function (callback, limit) {
-  register.find(callback).limit(limit);
+    Register.find(callback).limit(limit);
 }

@@ -13,7 +13,7 @@ var tutorViewSchema = new mongoose.Schema({
 });
 
 //Export view tutor model
-let TutorView = module.exports = mongoose.model('Tutor View', tutorViewSchema);
+let TutorView = module.exports = mongoose.model('tutorView', tutorViewSchema);
 module.exports.get = function (callback, limit) {
     TutorView.find(callback).limit(limit);
 }

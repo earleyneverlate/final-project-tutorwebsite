@@ -1,7 +1,7 @@
 //File Name: register-controller.js
 
 //Imports
-RegisterView = require('../models/register-model');
+Register = require('../models/register-model');
 
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display register view
@@ -11,12 +11,12 @@ exports.viewlogin = function (req, res){
 
 //Function to display register view
 exports.viewregister = function (req, res){
-  res.render('register', {title:"New User", newusers:{}});
+  res.render('register', {title:"New User", register:{}});
 };
 
 //Function to login
 exports.login = function (req, res) {
-    var login = new RegisterView();
+    var login = new Register();
     login.username = req.body.username;
     login.password = req.body.password;
 
@@ -31,9 +31,10 @@ exports.login = function (req, res) {
 
 //Function to add new registered users to database
 exports.adduser = function (req, res) {
-    var register = new RegisterView();
+    var register = new Register();
     register.first = req.body.first;
     register.last = req.body.last;
+    register.username = req.body.username;
     register.email = req.body.email;
     register.password= req.body.password;
     register.confirm = req.body.confirm;

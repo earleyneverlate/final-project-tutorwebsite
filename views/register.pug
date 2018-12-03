@@ -96,21 +96,21 @@ block content
       }
   body
     .signup-form
-      form(action='/examples/actions/confirmation.php', method='post')
+      form(method='post')
         h2 Register
         p.hint-text Create your account for Find my Tutor.
         .form-group
-          .row
-            .col-xs-6
-              input.form-control(type='text', name='first_name', placeholder='First Name', required='required')
-            .col-xs-6
-              input.form-control(type='text', name='last_name', placeholder='Last Name', required='required')
+          input.form-control(type='text' name='first' placeholder='First Name' required='required' value=register.first)
         .form-group
-          input.form-control(type='email', name='email', placeholder='Email', required='required')
+          input.form-control(type='text' name='last' placeholder='Last Name' required='required' value=register.last)
         .form-group
-          input.form-control(type='password', name='password', placeholder='Password', required='required')
+          input.form-control(type='text' name='username' placeholder='Username' required='required' value=register.username)
         .form-group
-          input.form-control(type='password', name='confirm_password', placeholder='Confirm Password', required='required')
+          input.form-control(type='email' name='email' placeholder='Email' required='required' value=register.email)
+        .form-group
+          input.form-control(type='password' name='password' placeholder='Password' required='required' value=register.password)
+        .form-group
+          input.form-control(type='password' name='confirm' placeholder='Confirm Password' required='required' value=register.confirm)
         .form-group
           button.btn.btn-success.btn-lg.btn-block(type='submit') Register Now
       p.text-center

@@ -13,7 +13,7 @@ var studentViewSchema = new mongoose.Schema({
 });
 
 //Export view student model
-let StudentView = module.exports = mongoose.model('StudentView', studentViewSchema);
+let StudentView = module.exports = mongoose.model('studentView', studentViewSchema);
 module.exports.get = function (callback, limit) {
     StudentView.find(callback).limit(limit);
 }

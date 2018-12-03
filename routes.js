@@ -51,6 +51,7 @@ router.route('/login')
 //register routes
 router.route('/register')
     .get(registerController.viewregister)
+    .post(registerController.adduser)
 
 //appointment API routes
 router.route('/api/appointment')
