@@ -7,13 +7,36 @@ block navelements
     a.nav-link(href='#') Find Students
 
 block content
-  h1.mt-5= student.name
-  a.btn.btn-primary(href='#' style='margin-left: 25px') Update Profile
-  form(action='/profiles/studentprofiles/' + student.id + '/delete' method="POST")
-    button.btn.btn-delete(type='submit') Delete Profile
-  h6.mt-5= "Name: '" + student.name
-  h6.mt-5= "Location: '" + student.location
-  h6.mt-5= "Grade Level: '" + student.grade
-  h6.mt-5= "Subject: '" + student.subject
-  h6.mt-5= "Availability: '" + student.availability
-  a.btn.btn-primary(href='/appointment-form/' style='margin-left: 25px') Schedule Appointment
+  .container
+  .row
+    .col-md-5.toppad.pull-right.col-md-offset-3
+      a(href='/views/student-profile-form') Edit Profile
+      a(href='/views/delete') Delete Profile
+      br
+    .col-xs-12.col-sm-12.col-md-6.col-lg-6.col-xs-offset-0.col-sm-offset-0.col-md-offset-3.col-lg-offset-3.toppad
+      .panel.panel-info
+        .panel-heading
+          h3.panel-title Student Profile
+        .panel-body
+          .row
+            .col-md-9.col-lg-9
+              table.table.table-student-information
+                tbody
+                  tr
+                    td Name:
+                    td=student.name
+                  tr
+                    td Location:
+                    td=student.location
+                  tr
+                    td Grade:
+                    td=student.grade
+                  tr
+                  tr
+                    td Subject:
+                    td=student.subject
+                  tr
+                  tr
+                    td Availability:
+                    td=student.availability
+                  tr
