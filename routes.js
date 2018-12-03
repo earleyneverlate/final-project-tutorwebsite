@@ -26,6 +26,9 @@ router.route('/tutor/new')
 router.route('/tutor/view')
     .get(tutorviewController.alltutors)
 
+router.route('/tutor/view/:tutor_id')
+    .get(tutorviewController.viewtutor)
+
 //student routes
 router.route('/student/new')
     .get(studentviewController.newstudent)
@@ -36,6 +39,8 @@ router.route('/student/view')
 
 router.route('/student/view/:student_id')
     .get(studentviewController.viewstudent)
+
+
 
 //appointment API routes
 router.route('/api/appointment')

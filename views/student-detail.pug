@@ -9,7 +9,7 @@ block navelements
 block content
   h1.mt-5= student.name
   a.btn.btn-primary(href='#' style='margin-left: 25px') Update Profile
-  form(action='/profiles/studentprofiles/' + student.id + '/delete' method="POST")
+  form(action='#' method="POST")
     button.btn.btn-delete(type='submit') Delete Profile
   h6.mt-5= "Name: '" + student.name
   h6.mt-5= "Location: '" + student.location
