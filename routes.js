@@ -21,53 +21,54 @@ router.route('/tutor/view/viewtutorappointment/:tutor_id')
     .get(appointmentController.viewtutorappointment)
 
 //apppointment routes
-router.route('/appointment/new/student/:student_id')
+router.route('/appointment/new/student/:username')
     .get(appointmentController.newstudentappointment)
     .post(appointmentController.addstudentappointment)
 
-router.route('/appointment/new/tutor/:tutor_id')
+router.route('/appointment/new/tutor/:username')
     .get(appointmentController.newtutorappointment)
     .post(appointmentController.addtutorappointment)
 
-router.route('/appointments/view/student/:student_id')
+router.route('/appointments/view/student/:username')
     .get(appointmentController.viewstudentappointment)
 
-router.route('/appointments/view/tutor/:tutor_id')
+router.route('/appointments/view/tutor/:username')
     .get(appointmentController.viewtutorappointment)
 
 //tutor routes
-router.route('/tutor/new/:tutor_id')
+router.route('/tutor/new/')
     .get(tutorviewController.newtutor)
     .post(tutorviewController.addtutor)
 
 router.route('/tutor/view')
     .get(tutorviewController.alltutors)
 
-router.route('/tutor/view/:tutor_id')
+router.route('/tutor/view/:username')
     .get(tutorviewController.viewtutor)
+    .post(tutorviewController.submitrating)
 
-router.route('/tutor/view/tutordetails/:tutor_id')
-    .get(tutorviewController.viewtutor)
+router.route('/tutor/view/profile/:username')
+    .get(tutorviewController.viewtutorprofile)
 
-router.route('/tutor/view/:tutor_subject)
-    .get(tutorviewController.viewtutor)
+router.route('/tutor/view/subject/:tutor_subject')
+    .get(tutorviewController.filtertutorsubject)
 
 //student routes
-router.route('/student/new/:student_id')
+router.route('/student/new/')
     .get(studentviewController.newstudent)
     .post(studentviewController.addstudent)
 
 router.route('/student/view')
     .get(studentviewController.allstudents)
 
-router.route('/student/view/:student_id')
+router.route('/student/view/:username')
     .get(studentviewController.viewstudent)
 
-router.route('/student/view/studentdetails/:student_id')
-    .get(studentviewController.viewstudent)
+router.route('/student/view/profile/:username')
+    .get(studentviewController.viewstudentprofile)
 
-router.route('/student/view/:student_subject)
-    .get(studentViewController.viewstudent)
+router.route('/student/view/subject/:student_subject')
+    .get(studentviewController.filterstudentsubject)
 
 //login routes
 router.route('/login')

@@ -4,9 +4,9 @@ block navelements
   li.nav-item
     a.nav-link(href='/student/view') Find Students
   li.nav-item
-    a.nav-link(href='/tutor/view/tutordetails/:tutor_id') View Profile
+    a.nav-link(href='/tutor/view/profile/' +username) View Profile
   li.nav-item
-    a.nav-link(href='/tutor/view/viewtutorappointment/:tutor_id') View Appointments
+    a.nav-link(href='/appointments/view/tutor/' +username) View Appointments
   li.nav-item
     a.nav-link(href='/login') Logout
 
@@ -14,7 +14,7 @@ block content
   head
     style(type='text/css').
       .login-text {
-      color: #f7be71;
+      color: #343a40;
       margin-top: 2em;
       font-size: 22px;
       }
@@ -23,33 +23,33 @@ block content
     p.login-text.text-center= message
     h2.mt-5=title
     .dropdown
-      button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+      button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='dropdown')
         | Filter by Subject
         span.caret
       ul.dropdown-menu
         input#myInput.form-control(type='text', placeholder='Filter by Subject')
         li
-          a(href='/student/view/English') English
+          a(href='/student/view/subject/English') English
         li
-          a(href='/student/view/History') History
+          a(href='/student/view/subject/History') History
         li
-          a(href='/student/view/Calculus') Calculus
+          a(href='/student/view/subject/Calculus') Calculus
         li
-          a(href='/student/view/Geometry') Geometry
+          a(href='/student/view/subject/Geometry') Geometry
         li
-          a(href='/student/view/Algebra') Algebra 
+          a(href='/student/view/subject/Algebra') Algebra
         li
-          a(href='/student/view/Computer Science') Computer Science
-        li 
-          a(href='/student/view/Biology') Biology
-        li 
-          a(href='/student/view/Chemistry') Chemistry
-        li 
+          a(href='/student/view/subject/Computer Science') Computer Science
+        li
+          a(href='/student/view/subject/Biology') Biology
+        li
+          a(href='/student/view/subject/Chemistry') Chemistry
+        li
           a(href='/student/view/Physics') Physics
     table.table.table-striped.table-bordered(style='margin-top: 1.5em')
       thead
         tr
-          th(scope='col') Student ID
+          th(scope='col') Student Name
           th(scope='col') Location
           th(scope='col') Grade
           th(scope='col') Subject
@@ -58,12 +58,12 @@ block content
         each student in students
           tr
             td
-              a(href='/student/view/' + student.id)= student.user
+              a(href='/student/view/' + student.username)= student.first + " " + student.last
             td=student.location
             td=student.grade
             td=student.subject
             td=student.availability
-            
+
 block scripts
   script(type='text/javascript' src='https://code.jquery.com/jquery-1.11.3.min.js')
   script.

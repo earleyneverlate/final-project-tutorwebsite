@@ -10,14 +10,14 @@ block content
   head
     style(type='text/css').
       body{
-      color: #fff;
-      background: #63738a;
+      color: #000;
+      background: #FFF;
       font-family: 'Roboto', sans-serif;
       }
       .form-control{
       height: 40px;
       box-shadow: none;
-      color: #f7be71;
+      color: #000;
       }
       .form-control:focus{
       border-color: #5cb85c;
@@ -97,7 +97,7 @@ block content
       text-decoration: underline;
       }
       .login-text {
-      color: #f7be71;
+      color: #343a40;
       }
   body
     .signup-form
@@ -105,10 +105,6 @@ block content
         h2 Register
         p.login-text.text-center= message
         p.hint-text Create your account for Find my Tutor.
-        .form-group
-          input.form-control(type='text' name='first' placeholder='First Name' required='required' value=register.first)
-        .form-group
-          input.form-control(type='text' name='last' placeholder='Last Name' required='required' value=register.last)
         .form-group
           input.form-control(type='text' name='username' placeholder='Username' required='required' value=register.username)
         .form-group
@@ -133,5 +129,5 @@ block content
             }
         .form-group
           button.btn.btn-success.btn-lg.btn-block(type='submit') Register Now
-      p.text-center
-        a(href='./login') Already have an account? Login here
+        p.text-center
+          a(href='./login' style='color: #343a40') Already have an account? Login here

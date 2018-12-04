@@ -28,16 +28,16 @@ block content
           form(method='post')
             .form-group
               label.control-label.requiredField(for='tutor')
-                | Tutor ID
+                | Tutor Username
                 span.asteriskField
                   | *
-              input#tutor.form-control(type='text' placeholder='Enter your tutor ID' name="tutor" value=appointment.tutor)
+              input#tutor.form-control(type='text' placeholder='Enter your username' name="tutor" value=appointment.tutor)
             .form-group
               label.control-label.requiredField(for='student')
-                | Student ID
+                | Student Username
                 span.asteriskField
                   | *
-              input#student.form-control(type='text' placeholder='Enter student ID' name="student" value=student)
+              input#student.form-control(type='text' placeholder='Enter student name' readonly="readonly" name="student" value=studentdetails)
             .form-group
               label.control-label.requiredField(for='appointmentDate')
                 | Date
@@ -94,7 +94,7 @@ block content
               textarea#message.form-control(cols='40' name='message' rows='10')
             .form-group
               div
-                button.btn.btn-primary(name='submit' type='submit' style='margin-right: 1.2em')
+                button.btn.btn-dark(name='submit' type='submit' style='margin-right: 1.2em')
                   | Schedule Appointment
                 button.btn.btn-secondary(name='cancel' type='button')
                   | Cancel
