@@ -132,3 +132,16 @@ exports.delete = function (req, res) {
         res.status(204).send();
     });
 };
+
+exports.filterstudentsubject = function (req, res) {
+  StudentView.find({ subject: req.params.student_subject })
+  .exec(function (err, subject) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!subject) {
+      res.render('error', {message: "No subject found!"});
+    } else {
+      res.render('main-student-view', {title:"Find Students", message: req.flash('message'), students:student})
+    }
+  });
+};
