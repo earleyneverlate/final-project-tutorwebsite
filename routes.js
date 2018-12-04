@@ -49,7 +49,7 @@ router.route('/tutor/view/:username')
 router.route('/tutor/view/profile/:username')
     .get(tutorviewController.viewtutorprofile)
 
-router.route('/tutor/view/:tutor_subject')
+router.route('/tutor/view/subject/:tutor_subject')
     .get(tutorviewController.filtertutorsubject)
 
 //student routes
@@ -66,7 +66,7 @@ router.route('/student/view/:username')
 router.route('/student/view/profile/:username')
     .get(studentviewController.viewstudentprofile)
 
-router.route('/student/view/:student_subject')
+router.route('/student/view/subject/:student_subject')
     .get(studentviewController.filterstudentsubject)
 
 //login routes

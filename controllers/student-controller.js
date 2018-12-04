@@ -81,13 +81,14 @@ exports.addstudent = function (req, res) {
     });
 };
 
+//Function to filter by subjects
 exports.filterstudentsubject = function (req, res) {
   StudentView.find({ subject: req.params.student_subject })
-  .exec(function (err, subject) {
+  .exec(function (err, student) {
     if (err) {
       res.render('error', {message: err});
-    } else if (!subject) {
-      res.render('error', {message: "No subject found!"});
+    } else if (!student) {
+      res.render('error', {message: "No students found for this subject found!"});
     } else {
       res.render('main-student-view', {title:"Find Students", message: req.flash('message'), students:student})
     }

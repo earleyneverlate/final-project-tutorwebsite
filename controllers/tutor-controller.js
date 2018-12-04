@@ -81,13 +81,14 @@ exports.addtutor = function (req, res) {
     });
 };
 
+//Function to filter by subjects
 exports.filtertutorsubject = function (req, res) {
   TutorView.find({ subject: req.params.tutor_subject })
-  .exec(function (err, subject) {
+  .exec(function (err, tutor) {
     if (err) {
       res.render('error', {message: err});
-    } else if (!subject) {
-      res.render('error', {message: "No subject found!"});
+    } else if (!tutor) {
+      res.render('error', {message: "No tutors found for this subject found!"});
     } else {
       res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), tutors:tutor})
     }
