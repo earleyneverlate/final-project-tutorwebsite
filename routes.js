@@ -76,6 +76,10 @@ router.route('/student/view/subject/:student_subject')
 router.route('/student/profile/remove/:username')
     .post(studentviewController.removestudentprofile)
 
+router.route('/student/profile/update/:username')
+    .get(studentviewController.updatestudentprofile)
+    .post(studentviewController.postupdatestudent)
+
 //login routes
 router.route('/login')
     .get(registerController.viewlogin)
