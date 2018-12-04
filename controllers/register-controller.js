@@ -36,7 +36,6 @@ exports.login = function (req, res) {
               if (err) {
                 res.render('error', {message: err});
               } else {
-                req.flash('idnumber', tutor._id);
                 res.redirect('./student/view');
               }
             });
@@ -46,7 +45,6 @@ exports.login = function (req, res) {
               if (err) {
                 res.render('error', {message: err});
               } else {
-                req.flash('idnumber', student._id);
                 res.redirect('./tutor/view');
               }
             });
