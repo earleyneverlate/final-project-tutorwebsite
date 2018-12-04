@@ -1,5 +1,8 @@
 extends layout.pug
 
+block links
+  link(rel='stylesheet', href='../views/styles.css')
+
 block navelements
   li.nav-item
     a.nav-link(href='/student/view') Find Students
@@ -16,11 +19,12 @@ block content
     .col-xs-12.col-sm-12.col-md-6.col-lg-6.col-xs-offset-0.col-sm-offset-0.col-md-offset-3.col-lg-offset-3.toppad
       .panel.panel-info
         .panel-heading
+          p
           h3.panel-title Student Details
         .panel-body
           .row
             .col-md-3.col-lg-3(align='center')
-              img.img-circle.img-responsive(alt='Find My Tutor Logo', src='/images/findmytutorlogo.png')
+              img.img-circle.img-responsive(alt='Find My Tutor Logo', src='https://github.com/tutorwebsite/final-project-tutorwebsite/blob/master/images/findmytutorlogo.png?raw=true', width='140')
             .col-md-9.col-lg-9
               table.table.table-student-information
                 tbody
