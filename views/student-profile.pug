@@ -5,10 +5,6 @@ block links
 
 block navelements
   li.nav-item
-    a.nav-link(href='/student/view') Find Students
-  li.nav-item
-    a.nav-link(href='#') View Appointments
-  li.nav-item
     a.nav-link(href='/login') Logout
 
 block content
@@ -44,5 +40,14 @@ block content
                     td Availability:
                     td=student.availability
                   tr
-              a.btn.btn-dark(href='#' style="margin-right: 1.5em") Update Profile
-              a.btn.btn-danger(href='#') Delete Profile
+              form(action='/student/profile/update/' + student.username, method="get")
+                .form-group
+                  button.btn.btn-dark(style="margin-right: 1.5em") Update Profile
+              form(action='/student/profile/remove/' + student.username, method="post")
+                .form-group
+                  button.btn.btn-danger(style="margin-right: 1.5em" type=submit) Delete Profile
+              .btn.btn-secondary(onclick='goBack()', style="color: white") Back
+              script.
+                function goBack() {
+                window.history.back();
+                }

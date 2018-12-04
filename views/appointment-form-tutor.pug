@@ -6,12 +6,6 @@ block links
 
 block navelements
   li.nav-item
-      a.nav-link(href='/tutor/view') Find Tutors
-  li.nav-item
-      a.nav-link(href='#') View Profile
-  li.nav-item
-      a.nav-link(href='#') View Appointments
-  li.nav-item
       a.nav-link(href='/login') Logout
 
 block content
@@ -37,7 +31,7 @@ block content
                 | Student Username
                 span.asteriskField
                   | *
-              input#student.form-control(type='text' placeholder='Enter your username' name="student" value=appointment.student)
+              input#student.form-control(type='text' placeholder='Enter your username' required='required' name="student" value=appointment.student)
             .form-group
               label.control-label.requiredField(for='appointmentDate')
                 | Date
@@ -96,8 +90,12 @@ block content
               div
                 button.btn.btn-dark(name='submit' type='submit' style='margin-right: 1.2em')
                   | Schedule Appointment
-                button.btn.btn-secondary(name='cancel' type='button')
+                button.btn.btn-secondary(name='cancel' type='button' onclick='goBack()')
                   | Cancel
+                script.
+                  function goBack() {
+                  window.history.back();
+                  }
 block scripts
   script(type='text/javascript' src='https://code.jquery.com/jquery-1.11.3.min.js')
   script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js')
