@@ -45,11 +45,13 @@ router.route('/tutor/view')
 
 router.route('/tutor/view/:tutor_id')
     .get(tutorviewController.viewtutor)
+    .put(tutorviewController.update)
+    .delete(tutorviewController.delete);
 
 router.route('/tutor/view/tutordetails/:tutor_id')
     .get(tutorviewController.viewtutor)
 
-router.route('/tutor/view/:tutor_subject)
+router.route('/tutor/view/:tutor_subject')
     .get(tutorviewController.viewtutor)
 
 //student routes
@@ -62,11 +64,13 @@ router.route('/student/view')
 
 router.route('/student/view/:student_id')
     .get(studentviewController.viewstudent)
+    .put(studentviewController.update)
+    .delete(studentviewController.delete);
 
 router.route('/student/view/studentdetails/:student_id')
     .get(studentviewController.viewstudent)
 
-router.route('/student/view/:student_subject)
+router.route('/student/view/:student_subject')
     .get(studentViewController.viewstudent)
 
 //login routes
@@ -102,8 +106,8 @@ router.route('/api/student')
 
 router.route('/api/student/:student_id')
 	.get(studentviewController.view)
-  .put(studentviewController.update)
-  .delete(studentviewController.delete);
+    .put(studentviewController.update)
+    .delete(studentviewController.delete);
 
 router.route('/api/student/view/studentdetails')
 	.get(studentviewController.view)
@@ -118,14 +122,14 @@ router.route('/api/tutor')
 
 router.route('/api/tutor/:tutor_id')
 	.get(tutorviewController.view)
-  .put(tutorviewController.update)
-  .delete(tutorviewController.delete);
+    .put(tutorviewController.update)
+    .delete(tutorviewController.delete);
 
 router.route('/api/tutor/view/tutordetails')
-        .get(tutorviewController.view)
+    .get(tutorviewController.view)
 
 router.route('/api/tutor/view/:tutor_subject')
-        .get(tutorviewController.view)
+    .get(tutorviewController.view)
 
 //Export module
 module.exports = router;
