@@ -24,7 +24,7 @@ block content
                   tbody
                     tr
                       td Tutor Name:
-                      td=tutor.first + " " + tutor.last 
+                      td=tutor.first + " " + tutor.last
                     tr
                       td Location:
                       td=tutor.location
@@ -43,5 +43,5 @@ block content
                       td Rating:
                       td=tutor.rate
                     tr
-                a.btn.btn-primary(href='../../appointment/new/tutor/' +tutor.user, style='margin-right: 1.5em') Schedule Appointment
+                a.btn.btn-primary(href='../../appointment/new/tutor/' +tutor._id, style='margin-right: 1.5em') Schedule Appointment
                 a.btn.btn-primary(href='#') Rate Tutor

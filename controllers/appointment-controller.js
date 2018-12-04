@@ -21,7 +21,16 @@ exports.newstudentappointment = function (req, res) {
 };
 
 exports.newtutorappointment = function (req, res) {
-  res.render('appointment-form-tutor', {title: "Schedule Appointment With Tutor", command: "Schedule Appointment", appointment: {}});
+  Tutor.find({ _id: req.params.tutor_id })
+  .exec(function (err, tutor) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!tutor) {
+      res.render('error', {message: "No tutor found!"});
+    } else {
+      res.render('appointment-form-tutor', {title: "Schedule Appointment With Tutor", tutordetails: tutor, command: "Schedule Appointment", appointment: {}});;
+    }
+  });
 };
 
 //Function to display all appointments
