@@ -81,7 +81,7 @@ exports.viewtutorprofile = function (req, res) {
   });
 };
 
-//Delete tutor profile
+//Function to delete tutor profile
 exports.removetutorprofile = function (req, res) {
     TutorView.remove({username: req.params.username},
       function (profile) {

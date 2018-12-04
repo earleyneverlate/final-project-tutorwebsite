@@ -59,7 +59,7 @@ exports.viewstudentprofile = function (req, res) {
   });
 };
 
-//Delete student profile
+//Function to delete student profile
 exports.removestudentprofile = function (req, res) {
     StudentView.remove({username: req.params.username},
       function (profile) {
