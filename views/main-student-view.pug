@@ -2,7 +2,7 @@ extends layout.pug
 
 block navelements
   li.nav-item
-    a.nav-link(href='/student/view') Find Students
+    a.nav-link(href='#top') Find Students
   li.nav-item
     a.nav-link(href='/tutor/view/profile/' +username) View Profile
   li.nav-item
@@ -20,7 +20,7 @@ block content
       }
 
   body
-    p.login-text.text-center= message
+    p#top.login-text.text-center= message
     h2.mt-5=title
     .dropdown
       button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='dropdown')
