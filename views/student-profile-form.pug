@@ -21,6 +21,20 @@ block content
         .col-md-6.col-sm-6.col-xs-12
           form(method='post')
             .form-group
+              label.control-label.requiredField(for='first')
+                | First Name
+                span.asteriskField
+                  | *
+              .input-group
+                input#first.form-control(name='first', placeholder='Enter first name', type='text', value=student.first)
+            .form-group
+                label.control-label.requiredField(for='last')
+                  | Last Name
+                  span.asteriskField
+                    | *
+                .input-group
+                  input#last.form-control(name='last', placeholder='Enter last name', type='text', value=student.last)
+            .form-group
               label.control-label.requiredField(for='location')
                 | Location
                 span.asteriskField

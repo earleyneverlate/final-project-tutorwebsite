@@ -45,7 +45,8 @@ exports.viewstudent = function (req, res) {
 //Function to add new student to database
 exports.addstudent = function (req, res) {
     var studentView = new StudentView();
-    studentView.user = req.params.student_id;
+    studentView.first = req.body.first;
+    studentView.last = req.body.last;
     studentView.location = req.body.location;
     studentView.grade = req.body.grade;
     studentView.subject = req.body.subject;
@@ -56,7 +57,6 @@ exports.addstudent = function (req, res) {
         res.render('error', {message: err});
       } else {
         req.flash('message', 'Profile created! Find tutors below.');
-        req.flash('idnumber', studentView.user);
         res.redirect('/tutor/view');
       }
     });

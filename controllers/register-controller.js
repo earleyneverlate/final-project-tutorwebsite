@@ -61,8 +61,6 @@ exports.login = function (req, res) {
 //Function to add new users to database
 exports.adduser = function (req, res) {
     var register = new Register();
-    register.first = req.body.first;
-    register.last = req.body.last;
     register.username = req.body.username;
     register.email = req.body.email;
     register.role = req.body.role;
@@ -73,9 +71,9 @@ exports.adduser = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else if(register.role === "tutor") {
-        res.redirect('/tutor/new/' +register._id);
+        res.redirect('/tutor/new/');
       } else if(register.role === "student") {
-        res.redirect('/student/new/' +register._id);
+        res.redirect('/student/new/');
       }
     });
 };

@@ -30,7 +30,7 @@ router.route('/appointments/view/tutor/:tutor_id')
     .get(appointmentController.viewtutorappointment)
 
 //tutor routes
-router.route('/tutor/new/:tutor_id')
+router.route('/tutor/new/')
     .get(tutorviewController.newtutor)
     .post(tutorviewController.addtutor)
 
@@ -41,7 +41,7 @@ router.route('/tutor/view/:tutor_id')
     .get(tutorviewController.viewtutor)
 
 //student routes
-router.route('/student/new/:student_id')
+router.route('/student/new/')
     .get(studentviewController.newstudent)
     .post(studentviewController.addstudent)
 
