@@ -14,6 +14,12 @@ router.get('/', function (req, res) {
     res.render('index');
 });
 
+//view appointments routes
+router.route('/student/view/viewstudentappointment/:student_id')
+    .get(appointmentController.viewstudentappointment)
+router.route('/tutor/view/viewtutorappointment/:tutor_id')
+    .get(appointmentController.viewtutorappointment)
+
 //apppointment routes
 router.route('/appointment/new/student/:student_id')
     .get(appointmentController.newstudentappointment)
@@ -51,6 +57,9 @@ router.route('/student/view')
 router.route('/student/view/:student_id')
     .get(studentviewController.viewstudent)
 
+router.route('/student/view/studentdetails/:student_id')
+    .get(studentviewController.viewstudent)
+
 //login routes
 router.route('/login')
     .get(registerController.viewlogin)
@@ -71,6 +80,12 @@ router.route('/api/appointment/:appointment_id')
     .put(appointmentController.update)
     .delete(appointmentController.delete);
 
+router.route('/api/tutor/view/viewtutorappointment/:tutor_id')
+    .get(appointmentController.view)
+
+router.route('/api/student/view/viewstudentappointment/:student_id')
+    .get(appointmentController.view)
+
 //student API routes
 router.route('/api/student')
 	.get(studentviewController.index)
@@ -81,6 +96,9 @@ router.route('/api/student/:student_id')
   .put(studentviewController.update)
   .delete(studentviewController.delete);
 
+router.route('/api/student/view/studentdetails')
+	.get(studentviewController.view)
+
 //tutor view API routes
 router.route('/api/tutor')
 	.get(tutorviewController.index)
@@ -90,6 +108,9 @@ router.route('/api/tutor/:tutor_id')
 	.get(tutorviewController.view)
   .put(tutorviewController.update)
   .delete(tutorviewController.delete);
+
+router.route('/api/tutor/view/tutordetails')
+        .get(tutorviewController.view)
 
 //Export module
 module.exports = router;

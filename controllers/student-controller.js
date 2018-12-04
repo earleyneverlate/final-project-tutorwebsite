@@ -15,7 +15,7 @@ exports.allstudents = function (req, res){
     if (err) {
       res.render('error', {message: "Uh oh! No students were retrieved."});
     } else {
-      res.render('main-student-view', {title:"Find Students", message: req.flash('message'), idnumber: req.flash('idnumber'), students:student});
+      res.render('main-student-view', {title:"Find Students", message: req.flash('message'), tutorid: req.flash('tutorid'), students:student});
     }
   });
 };
