@@ -21,18 +21,18 @@ router.route('/tutor/view/viewtutorappointment/:tutor_id')
     .get(appointmentController.viewtutorappointment)
 
 //apppointment routes
-router.route('/appointment/new/student/:student_id')
+router.route('/appointment/new/student/:username')
     .get(appointmentController.newstudentappointment)
     .post(appointmentController.addstudentappointment)
 
-router.route('/appointment/new/tutor/:tutor_id')
+router.route('/appointment/new/tutor/:username')
     .get(appointmentController.newtutorappointment)
     .post(appointmentController.addtutorappointment)
 
-router.route('/appointments/view/student/:student_id')
+router.route('/appointments/view/student/:username')
     .get(appointmentController.viewstudentappointment)
 
-router.route('/appointments/view/tutor/:tutor_id')
+router.route('/appointments/view/tutor/:username')
     .get(appointmentController.viewtutorappointment)
 
 //tutor routes

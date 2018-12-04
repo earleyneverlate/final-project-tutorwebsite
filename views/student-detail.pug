@@ -7,7 +7,7 @@ block navelements
   li.nav-item
     a.nav-link(href='/student/view') Find Students
   li.nav-item
-    a.nav-link(href='/tutor/view/tutordetails/:tutor_id') View Profile
+    a.nav-link(href='/tutor/view/profile/' +username) View Profile
   li.nav-item
     a.nav-link(href='/tutor/view/viewtutorappointment/:tutor_id') View Appointments
   li.nav-item
@@ -46,4 +46,4 @@ block content
                     td Availability:
                     td=student.availability
                   tr
-              a.btn.btn-dark(href='../../appointment/new/student/' +student._id) Schedule Appointment
+              a.btn.btn-dark(href='../../appointment/new/student/' +student.username) Schedule Appointment

@@ -40,7 +40,7 @@ exports.viewtutor = function (req, res) {
     } else if (!tutor) {
       res.render('error', {message: "No tutor found!"});
     } else {
-      res.render('tutor-detail', {tutor: tutor});
+      res.render('tutor-detail', {username: req.flash('username'), tutor: tutor});
     }
   });
 };

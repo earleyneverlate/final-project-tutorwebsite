@@ -8,34 +8,34 @@ Student = require('../models/student-model');
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display form page when 'Schedule Appointment' is clicked
 exports.newstudentappointment = function (req, res) {
-  Student.find({ _id: req.params.student_id })
+  Student.findOne({ username: req.params.username })
   .exec(function (err, student) {
     if (err) {
       res.render('error', {message: err});
     } else if (!student) {
       res.render('error', {message: "No student found!"});
     } else {
-      res.render('appointment-form-student', {title: "Schedule Appointment With Student", studentdetails: student[0].first + " " + student[0].last, command: "Schedule Appointment", appointment: {}});;
+      res.render('appointment-form-student', {title: "Schedule Appointment With Student", studentdetails: student.username, command: "Schedule Appointment", appointment: {}});;
     }
   });
 };
 
 exports.newtutorappointment = function (req, res) {
-  Tutor.find({ _id: req.params.tutor_id })
+  Tutor.findOne({ username: req.params.username })
   .exec(function (err, tutor) {
     if (err) {
       res.render('error', {message: err});
     } else if (!tutor) {
       res.render('error', {message: "No tutor found!"});
     } else {
-      res.render('appointment-form-tutor', {title: "Schedule Appointment With Tutor", tutordetails: tutor[0].first + " " + tutor[0].last, command: "Schedule Appointment", appointment: {}});;
+      res.render('appointment-form-tutor', {title: "Schedule Appointment With Tutor", tutordetails: tutor.username, command: "Schedule Appointment", appointment: {}});;
     }
   });
 };
 
 //Function to display all appointments
 exports.viewstudentappointment = function (req, res){
-  ScheduleAppointment.find({ student: req.params.student_id })
+  ScheduleAppointment.find({ student: req.params.username })
     .exec(function (err, appointment) {
       if (err) {
         res.render('error', {message: err});
@@ -48,7 +48,7 @@ exports.viewstudentappointment = function (req, res){
 };
 
 exports.viewtutorappointment = function (req, res){
-  ScheduleAppointment.find({ tutor: req.params.tutor_id })
+  ScheduleAppointment.find({ tutor: req.params.username })
     .exec(function (err, appointment) {
       if (err) {
         res.render('error', {message: err});

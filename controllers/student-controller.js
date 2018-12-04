@@ -40,7 +40,7 @@ exports.viewstudent = function (req, res) {
     } else if (!student) {
       res.render('error', {message: "No tutor found!"});
     } else {
-      res.render('student-detail', {student: student});
+      res.render('student-detail', {username: req.flash('username'), student: student});
     }
   });
 };
