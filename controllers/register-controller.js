@@ -2,6 +2,8 @@
 
 //Imports
 Register = require('../models/register-model');
+Tutor = require('../models/tutor-model');
+Student = require('../models/student-model');
 
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display login view
@@ -28,7 +30,13 @@ exports.login = function (req, res) {
           req.flash('message', 'No user found! Please register below.');
           res.redirect('./register');
         } else if (user.password === login.password) {
-          res.redirect('./tutor/view');
+          if (user.role === "tutor") {
+            req.flash('username', user.username);
+            res.redirect('./student/view');
+          } else {
+            req.flash('username', user.username);
+            res.redirect('./tutor/view');
+          }
         } else {
           req.flash('message', 'Incorrect username or password! Try again.');
           res.redirect('./login');
@@ -39,8 +47,6 @@ exports.login = function (req, res) {
 //Function to add new users to database
 exports.adduser = function (req, res) {
     var register = new Register();
-    register.first = req.body.first;
-    register.last = req.body.last;
     register.username = req.body.username;
     register.email = req.body.email;
     register.role = req.body.role;
@@ -51,9 +57,11 @@ exports.adduser = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else if(register.role === "tutor") {
-        res.redirect('/tutor/new/' +register._id);
+        req.flash('username', register.username);
+        res.redirect('/tutor/new/');
       } else if(register.role === "student") {
-        res.redirect('/student/new/' +register._id);
+        req.flash('username', register.username);
+        res.redirect('/student/new/');
       }
     });
 };

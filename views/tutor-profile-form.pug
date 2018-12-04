@@ -9,7 +9,7 @@ block navelements
       a.nav-link(href='/login') Logout
 
 block content
-  h1.mt-5= title
+  h3.mt-5= title
   link(rel='stylesheet', href='https://formden.com/static/cdn/bootstrap-iso.css')
   link(rel='stylesheet', href='https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css')
   style.
@@ -20,6 +20,27 @@ block content
       .row
         .col-md-6.col-sm-6.col-xs-12
           form(method='post')
+            .form-group
+              label.control-label.requiredField(for='first')
+                | First Name
+                span.asteriskField
+                  | *
+              .input-group
+                input#first.form-control(name='first', placeholder='Enter first name', type='text', value=tutor.first)
+            .form-group
+                label.control-label.requiredField(for='last')
+                  | Last Name
+                  span.asteriskField
+                    | *
+                .input-group
+                  input#last.form-control(name='last', placeholder='Enter last name', type='text', value=tutor.last)
+            .form-group
+                label.control-label.requiredField(for='username')
+                  | Username
+                  span.asteriskField
+                    | *
+                .input-group
+                  input#username.form-control(name='username', placeholder='Enter user name', readonly='readonly', type='text', value=username)
             .form-group
               label.control-label.requiredField(for='location')
                 | Location

@@ -7,9 +7,7 @@ block navelements
   li.nav-item
     a.nav-link(href='/student/view') Find Students
   li.nav-item
-    a.nav-link(href='/tutor/view/tutordetails/:tutor_id') View Profile
-  li.nav-item
-    a.nav-link(href='/tutor/view/viewtutorappointment/:tutor_id') View Appointments
+    a.nav-link(href='#') View Appointments
   li.nav-item
     a.nav-link(href='/login') Logout
 
@@ -24,7 +22,7 @@ block content
       .panel.panel-info
         .panel-heading
           p
-          h3.panel-title Student Details
+          h3.mt-5 My Student Profile
         .panel-body
           .row
             .col-md-3.col-lg-3(align='center')
@@ -33,8 +31,8 @@ block content
               table.table.table-student-information
                 tbody
                   tr
-                    td Student ID:
-                    td=student.user
+                    td Student Name:
+                    td=student.first + " " + student.last
                   tr
                     td Location:
                     td=student.location
@@ -50,4 +48,5 @@ block content
                     td Availability:
                     td=student.availability
                   tr
-            a.btn.btn-primary(href='../../appointment/new/student/' +student.user) Schedule Appointment
+              a.btn.btn-dark(href='#' style="margin-right: 1.5em") Update Profile
+              a.btn.btn-danger(href='#') Delete Profile
