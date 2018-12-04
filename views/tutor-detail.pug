@@ -11,40 +11,102 @@ block navelements
     a.nav-link(href='/login') Logout
 
 block content
-  .container
-    .row
-      .col-xs-12.col-sm-12.col-md-6.col-lg-6.col-xs-offset-0.col-sm-offset-0.col-md-offset-3.col-lg-offset-3.toppad
-        .panel.panel-info
-          .panel-heading
-            p
-            h3.mt-5 Tutor Details
-          .panel-body
-            .row
-              .col-md-3.col-lg-3(align='center')
-                img.img-circle.img-responsive(alt='Find My Tutor Logo', src='https://github.com/tutorwebsite/final-project-tutorwebsite/blob/master/images/findmytutorlogo.png?raw=true', width='140')
-              .col-md-9.col-lg-9
-                table.table.table-tutor-information
-                  tbody
-                    tr
-                      td Tutor Name:
-                      td=tutor.first + " " + tutor.last
-                    tr
-                      td Location:
-                      td=tutor.location
-                    tr
-                      td Grade:
-                      td=tutor.grade
-                    tr
-                    tr
-                      td Subject:
-                      td=tutor.subject
-                    tr
-                      td Availability:
-                      td=tutor.availability
-                    tr
-                    tr
-                      td Rating:
-                      td=tutor.rate
-                    tr
-                a.btn.btn-dark(href='../../appointment/new/tutor/' +tutor.username, style='margin-right: 1.5em') Schedule Appointment
-                a.btn.btn-dark(href='#') Rate Tutor
+  head
+    style(type='text/css').
+      @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+      fieldset, label { margin: 0; padding: 0; }
+      body{ margin: 20px; }
+      h1 { font-size: 1.5em; margin: 10px; }
+      /****** Style Star Rating Widget *****/
+      .rating {
+        border: none;
+        float: left;
+      }
+      .rating > input { display: none; }
+      .rating > label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+      }
+      .rating > .half:before {
+        content: "\f089";
+        position: absolute;
+      }
+      .rating > label {
+        color: #ddd;
+       float: right;
+      }
+      /***** CSS Magic to Highlight Stars on Hover *****/
+      .rating > input:checked ~ label, /* show gold star when clicked */
+      .rating:not(:checked) > label:hover, /* hover current star */
+      .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+      .rating > input:checked + label:hover, /* hover current star when changing rating */
+      .rating > input:checked ~ label:hover,
+      .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+      .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+  body
+    .container
+      .row
+        .col-xs-12.col-sm-12.col-md-6.col-lg-6.col-xs-offset-0.col-sm-offset-0.col-md-offset-3.col-lg-offset-3.toppad
+          .panel.panel-info
+            .panel-heading
+              p
+              h3.mt-5 Tutor Details
+            .panel-body
+              .row
+                .col-md-3.col-lg-3(align='center')
+                  img.img-circle.img-responsive(alt='Find My Tutor Logo', src='https://github.com/tutorwebsite/final-project-tutorwebsite/blob/master/images/findmytutorlogo.png?raw=true', width='140')
+                .col-md-9.col-lg-9
+                  table.table.table-tutor-information
+                    tbody
+                      tr
+                        td Tutor Name:
+                        td=tutor.first + " " + tutor.last
+                      tr
+                        td Location:
+                        td=tutor.location
+                      tr
+                        td Grade:
+                        td=tutor.grade
+                      tr
+                      tr
+                        td Subject:
+                        td=tutor.subject
+                      tr
+                        td Availability:
+                        td=tutor.availability
+                      tr
+                      tr
+                        td Rating:
+                        td=tutor.rating
+                      tr
+                  a.btn.btn-dark(href='../../appointment/new/tutor/' +tutor.username, style='margin-right: 1.5em') Schedule Appointment
+                  .rate-form
+                    form(method='post')
+                      .form-group
+                        fieldset.rating(value=tutor.rating)
+                          input#star5(type='radio', name='rating', value='5')
+                          label.full(for='star5', title='Awesome - 5 stars')
+                          input#star4half(type='radio', name='rating', value='4.5')
+                          label.half(for='star4half', title='Pretty good - 4.5 stars')
+                          input#star4(type='radio', name='rating', value='4')
+                          label.full(for='star4', title='Pretty good - 4 stars')
+                          input#star3half(type='radio', name='rating', value='3.5')
+                          label.half(for='star3half', title='Meh - 3.5 stars')
+                          input#star3(type='radio', name='rating', value='3')
+                          label.full(for='star3', title='Meh - 3 stars')
+                          input#star2half(type='radio', name='rating', value='2.5')
+                          label.half(for='star2half', title='Kinda bad - 2.5 stars')
+                          input#star2(type='radio', name='rating', value='2')
+                          label.full(for='star2', title='Kinda bad - 2 stars')
+                          input#star1half(type='radio', name='rating', value='1.5')
+                          label.half(for='star1half', title='Meh - 1.5 stars')
+                          input#star1(type='radio', name='rating', value='1')
+                          label.full(for='star1', title='Sucks big time - 1 star')
+                          input#starhalf(type='radio', name='rating', value='0.5')
+                          label.half(for='starhalf', title='Sucks big time - 0.5 stars')
+                      .form-group
+                        button.btn.btn-secondary(style='margin-left: 1em;') Rate Tutor

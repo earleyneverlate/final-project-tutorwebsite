@@ -45,6 +45,7 @@ router.route('/tutor/view')
 
 router.route('/tutor/view/:username')
     .get(tutorviewController.viewtutor)
+    .post(tutorviewController.submitrating)
 
 router.route('/tutor/view/profile/:username')
     .get(tutorviewController.viewtutorprofile)

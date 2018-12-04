@@ -45,6 +45,28 @@ exports.viewtutor = function (req, res) {
   });
 };
 
+//Function to submit ratings
+exports.submitrating = function (req, res) {
+  TutorView.findOne({ username: req.params.username })
+  .exec(function (err, tutor) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!tutor) {
+      res.render('error', {message: "No tutor found!"});
+    } else {
+      tutor.rating = req.body.rating;
+
+      tutor.save(function (err) {
+        if (err) {
+          res.render('error', {message: "Sorry, tutor not found!"});
+        } else {
+          res.render('tutor-detail', {username: tutor.username, tutor: tutor})
+        }
+      });
+    }
+  });
+};
+
 //Function to get tutor by username and display on view profile
 exports.viewtutorprofile = function (req, res) {
   TutorView.findOne({ username: req.params.username })
