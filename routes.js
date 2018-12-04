@@ -55,6 +55,13 @@ router.route('/tutor/view/profile/:username')
 router.route('/tutor/view/subject/:tutor_subject')
     .get(tutorviewController.filtertutorsubject)
 
+router.route('/tutor/profile/remove/:username')
+    .post(tutorviewController.removetutorprofile)
+
+router.route('/tutor/profile/update/:username')
+    .get(tutorviewController.updatetutorprofile)
+    .post(tutorviewController.postupdatetutor)
+
 router.route('/tutor/view/:tutor_subject')
     .get(tutorviewController.viewtutor)
 
@@ -76,6 +83,13 @@ router.route('/student/view/profile/:username')
 
 router.route('/student/view/subject/:student_subject')
     .get(studentviewController.filterstudentsubject)
+
+router.route('/student/profile/remove/:username')
+    .post(studentviewController.removestudentprofile)
+
+router.route('/student/profile/update/:username')
+    .get(studentviewController.updatestudentprofile)
+    .post(studentviewController.postupdatestudent)
 
 router.route('/student/view/:student_subject')
     .get(studentviewController.viewstudent)

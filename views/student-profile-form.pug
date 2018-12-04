@@ -26,21 +26,21 @@ block content
                 span.asteriskField
                   | *
               .input-group
-                input#first.form-control(name='first', placeholder='Enter first name', type='text', value=student.first)
+                input#first.form-control(name='first', placeholder='Enter first name', required='required', type='text', value=student.first)
             .form-group
                 label.control-label.requiredField(for='last')
                   | Last Name
                   span.asteriskField
                     | *
                 .input-group
-                  input#last.form-control(name='last', placeholder='Enter last name', type='text', value=student.last)
+                  input#last.form-control(name='last', placeholder='Enter last name', required='required', type='text', value=student.last)
             .form-group
                 label.control-label.requiredField(for='username')
                   | Username
                   span.asteriskField
                     | *
                 .input-group
-                  input#username.form-control(name='username', placeholder='Enter user name', readonly='readonly', type='text', value=username)
+                  input#username.form-control(name='username', placeholder='Enter user name', required='required', readonly='readonly', type='text', value=username)
             .form-group
               label.control-label.requiredField(for='location')
                 | Location
@@ -49,7 +49,7 @@ block content
               .input-group
                 .input-group-addon
                   i.fa.fa-map
-                input#location.form-control(name='location', placeholder='Enter Location', type='text', value=student.location)
+                input#location.form-control(name='location', placeholder='Enter Location', required='required', type='text', value=student.location)
             .form-group
               label.control-label.requiredField(for='grade')
                 | Grade

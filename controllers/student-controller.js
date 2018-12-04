@@ -9,6 +9,51 @@ exports.newstudent = function (req, res){
   res.render('student-profile-form', {title:"New Student Profile", username: req.flash('username'), student:{}});
 };
 
+//Function to display student-profile-form
+exports.updatestudentprofile = function (req, res){
+  StudentView.findOne({ username: req.params.username })
+  .exec(function (err, student) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!student) {
+      res.render('error', {message: "No student found!"});
+    } else {
+
+      res.render('student-profile-form', {title:"Update Student Profile", username: req.params.username, student: student});
+    }
+  });
+};
+
+//Function to update student to database
+exports.postupdatestudent = function (req, res) {
+  StudentView.findOne({ username: req.params.username })
+  .exec(function (err, student) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!student) {
+      res.render('error', {message: "No student found!"});
+    } else {
+      student.first = req.body.first;
+      student.last = req.body.last;
+      student.username = req.body.username;
+      student.location = req.body.location;
+      student.grade = req.body.grade;
+      student.subject = req.body.subject;
+      student.availability = req.body.availability;
+
+      student.save(function (err, student) {
+        if (err) {
+          res.render('error', {message: err});
+        } else {
+          req.flash('message', 'Profile updated! Find tutors below.');
+          req.flash('username', student.username);
+          res.redirect('/tutor/view');
+        }
+      });
+    }
+  });
+};
+
 //Function to display page with list of all students
 exports.allstudents = function (req, res){
   StudentView.get(function (err, student) {
@@ -57,6 +102,19 @@ exports.viewstudentprofile = function (req, res) {
       res.render('student-profile', {student: student, username: req.flash('username')});
     }
   });
+};
+
+//Function to delete student profile
+exports.removestudentprofile = function (req, res) {
+    StudentView.remove({username: req.params.username},
+      function (profile) {
+          console.log("Delete profile clicked!")
+    });
+    Register.remove({username: req.params.username},
+      function (registration) {
+          req.flash('message', "Profile deleted!");
+          res.redirect("/../../login")
+    });
 };
 
 //Function to add new student to database
