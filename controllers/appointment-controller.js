@@ -2,15 +2,26 @@
 
 //Imports
 ScheduleAppointment = require('../models/appointment-model');
+Tutor = require('../models/tutor-model');
+Student = require('../models/student-model');
 
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display form page when 'Schedule Appointment' is clicked
 exports.newstudentappointment = function (req, res) {
-  res.render('appointment-form-student', {title: "Schedule Appointment", student: req.params.student_id, command: "Schedule Appointment", appointment: {}});
+  Student.find({ _id: req.params.student_id })
+  .exec(function (err, student) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!student) {
+      res.render('error', {message: "No student found!"});
+    } else {
+      res.render('appointment-form-student', {title: "Schedule Appointment With Student", studentdetails: student, command: "Schedule Appointment", appointment: {}});;
+    }
+  });
 };
 
 exports.newtutorappointment = function (req, res) {
-  res.render('appointment-form-tutor', {title: "Schedule Appointment", tutor: req.params.tutor_id, command: "Schedule Appointment", appointment: {}});
+  res.render('appointment-form-tutor', {title: "Schedule Appointment With Tutor", command: "Schedule Appointment", appointment: {}});
 };
 
 //Function to display all appointments

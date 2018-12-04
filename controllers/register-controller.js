@@ -31,23 +31,9 @@ exports.login = function (req, res) {
           res.redirect('./register');
         } else if (user.password === login.password) {
           if (user.role === "tutor") {
-            Tutor.findOne({ user: user._id})
-            .exec(function (err, tutor) {
-              if (err) {
-                res.render('error', {message: err});
-              } else {
-                res.redirect('./student/view');
-              }
-            });
+            res.redirect('./student/view');
           } else {
-            Student.findOne({ user: user._id})
-            .exec(function (err, student) {
-              if (err) {
-                res.render('error', {message: err});
-              } else {
-                res.redirect('./tutor/view');
-              }
-            });
+            res.redirect('./tutor/view');
           }
         } else {
           req.flash('message', 'Incorrect username or password! Try again.');

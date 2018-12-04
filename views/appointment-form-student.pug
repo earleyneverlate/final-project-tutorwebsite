@@ -28,16 +28,16 @@ block content
           form(method='post')
             .form-group
               label.control-label.requiredField(for='tutor')
-                | Tutor ID
+                | Tutor Name
                 span.asteriskField
                   | *
-              input#tutor.form-control(type='text' placeholder='Enter your tutor ID' name="tutor" value=appointment.tutor)
+              input#tutor.form-control(type='text' placeholder='Enter your name' name="tutor" value=appointment.tutor)
             .form-group
               label.control-label.requiredField(for='student')
-                | Student ID
+                | Student Name
                 span.asteriskField
                   | *
-              input#student.form-control(type='text' placeholder='Enter student ID' name="student" value=student)
+              input#student.form-control(type='text' placeholder='Enter student name' name="student" disabled="true" value=studentdetails[0].first + " " + studentdetails[0].last)
             .form-group
               label.control-label.requiredField(for='appointmentDate')
                 | Date

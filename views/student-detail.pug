@@ -24,7 +24,7 @@ block content
                 tbody
                   tr
                     td Student Name:
-                    td=student.first + " " + student.last 
+                    td=student.first + " " + student.last
                   tr
                     td Location:
                     td=student.location
@@ -40,4 +40,4 @@ block content
                     td Availability:
                     td=student.availability
                   tr
-            a.btn.btn-primary(href='../../appointment/new/student/' +student.user) Schedule Appointment
+            a.btn.btn-primary(href='../../appointment/new/student/' +student._id) Schedule Appointment
