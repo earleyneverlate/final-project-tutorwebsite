@@ -14,6 +14,12 @@ router.get('/', function (req, res) {
     res.render('index');
 });
 
+//view appointments routes
+router.route('/student/view/viewstudentappointment/:student_id')
+    .get(appointmentController.viewstudentappointment)
+router.route('/tutor/view/viewtutorappointment/:tutor_id')
+    .get(appointmentController.viewtutorappointment)
+
 //apppointment routes
 router.route('/appointment/new/student/:student_id')
     .get(appointmentController.newstudentappointment)
@@ -70,6 +76,12 @@ router.route('/api/appointment/:appointment_id')
     .get(appointmentController.view)
     .put(appointmentController.update)
     .delete(appointmentController.delete);
+
+router.route('/api/tutor/view/viewtutorappointment/:tutor_id')
+    .get(appointmentController.view)
+
+router.route('/api/student/view/viewstudentappointment/:student_id')
+    .get(appointmentController.view)
 
 //student API routes
 router.route('/api/student')
