@@ -15,7 +15,7 @@ exports.newstudentappointment = function (req, res) {
     } else if (!student) {
       res.render('error', {message: "No student found!"});
     } else {
-      res.render('appointment-form-student', {title: "Schedule Appointment With Student", studentdetails: student, command: "Schedule Appointment", appointment: {}});;
+      res.render('appointment-form-student', {title: "Schedule Appointment With Student", studentdetails: student[0].first + " " + student[0].last, command: "Schedule Appointment", appointment: {}});;
     }
   });
 };
@@ -28,7 +28,7 @@ exports.newtutorappointment = function (req, res) {
     } else if (!tutor) {
       res.render('error', {message: "No tutor found!"});
     } else {
-      res.render('appointment-form-tutor', {title: "Schedule Appointment With Tutor", tutordetails: tutor, command: "Schedule Appointment", appointment: {}});;
+      res.render('appointment-form-tutor', {title: "Schedule Appointment With Tutor", tutordetails: tutor[0].first + " " + tutor[0].last, command: "Schedule Appointment", appointment: {}});;
     }
   });
 };
