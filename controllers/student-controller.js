@@ -59,6 +59,19 @@ exports.viewstudentprofile = function (req, res) {
   });
 };
 
+//Delete student profile
+exports.removestudentprofile = function (req, res) {
+    StudentView.remove({username: req.params.username},
+      function (profile) {
+          console.log("Delete profile clicked!")
+    });
+    Register.remove({username: req.params.username},
+      function (registration) {
+          req.flash('message', "Profile deleted!");
+          res.redirect("/../../login")
+    });
+};
+
 //Function to add new student to database
 exports.addstudent = function (req, res) {
     var studentView = new StudentView();

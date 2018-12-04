@@ -81,6 +81,19 @@ exports.viewtutorprofile = function (req, res) {
   });
 };
 
+//Delete tutor profile
+exports.removetutorprofile = function (req, res) {
+    TutorView.remove({username: req.params.username},
+      function (profile) {
+          console.log("Delete profile clicked!")
+    });
+    Register.remove({username: req.params.username},
+      function (registration) {
+          req.flash('message', "Profile deleted!");
+          res.redirect("/../../login")
+    });
+};
+
 //Function to add new tutor to database
 exports.addtutor = function (req, res) {
     var tutorView = new TutorView();

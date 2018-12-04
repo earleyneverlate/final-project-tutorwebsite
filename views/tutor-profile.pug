@@ -40,9 +40,11 @@ block content
                       td Rating:
                       td=tutor.rate
                     tr
-                a.btn.btn-dark(href='#' style="margin-right: 1.5em") Update Profile
-                a.btn.btn-danger(href='#' style="margin-right: 1.5em") Delete Profile
-                a.btn.btn-secondary(onclick='goBack()', style="color: white") Back
+                .btn.btn-dark(style="margin-right: 1.5em") Update Profile
+                form(action='/tutor/profile/remove/' + tutor.username, method="post")
+                  .form-group
+                    button.btn.btn-danger(style="margin-right: 1.5em" type=submit) Delete Profile
+                .btn.btn-secondary(onclick='goBack()', style="color: white") Back
                 script.
                   function goBack() {
                   window.history.back();
