@@ -7,6 +7,7 @@ let mongoose = require('mongoose');
 var studentViewSchema = new mongoose.Schema({
   first: { type: String, required: true },
   last: { type: String, required: true },
+  username: { type: String, unique:true, required: true },
   location: { type: String, required: true },
   grade: { type: String, required: true },
   subject: { type: String, required: true },

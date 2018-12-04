@@ -6,7 +6,7 @@ TutorView = require('../models/tutor-model');
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display tutor-profile-form
 exports.newtutor = function (req, res){
-  res.render('tutor-profile-form', {title:"New Tutor Profile", tutor:{}});
+  res.render('tutor-profile-form', {title:"New Tutor Profile", username: req.flash('username'), tutor:{}});
 };
 
 //Function to display page with list of all tutors
@@ -15,7 +15,7 @@ exports.alltutors = function (req, res){
     if (err) {
       res.render('error', {message: "Uh oh! No tutors were retrieved."});
     } else {
-      res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), idnumber: req.flash('idnumber'), tutors:tutor});
+      res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), username: req.flash('username'), idnumber: req.flash('idnumber'), tutors:tutor});
     }
   });
 };
@@ -42,11 +42,26 @@ exports.viewtutor = function (req, res) {
   });
 };
 
+//Function to get tutor by username and display on view profile
+exports.viewtutorprofile = function (req, res) {
+  TutorView.findOne({ username: req.params.username })
+  .exec(function (err, tutor) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!tutor) {
+      res.render('error', {message: "No tutor found!"});
+    } else {
+      res.render('tutor-profile', {tutor: tutor});
+    }
+  });
+};
+
 //Function to add new tutor to database
 exports.addtutor = function (req, res) {
     var tutorView = new TutorView();
     tutorView.first = req.body.first
     tutorView.last = req.body.last
+    tutorView.username = req.body.username
     tutorView.location = req.body.location;
     tutorView.grade = req.body.grade;
     tutorView.subject = req.body.subject;
@@ -57,10 +72,23 @@ exports.addtutor = function (req, res) {
         res.render('error', {message: err});
       } else {
         req.flash('message', 'Profile created! Find students below.');
-        req.flash('tutorid', tutorView._id);
+        req.flash('username', tutorView.username);
         res.redirect('/student/view');
       }
     });
+};
+
+exports.filtertutorsubject = function (req, res) {
+  TutorView.find({ subject: req.params.tutor_subject })
+  .exec(function (err, subject) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!subject) {
+      res.render('error', {message: "No subject found!"});
+    } else {
+      res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), tutors:tutor})
+    }
+  });
 };
 
 // ############## API ROUTE FUNCTIONS #####################

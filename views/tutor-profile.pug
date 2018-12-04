@@ -1,0 +1,48 @@
+extends layout.pug
+
+block navelements
+  li.nav-item
+    a.nav-link(href='/tutor/view') Find Tutors
+  li.nav-item
+    a.nav-link(href='#') View Appointments
+  li.nav-item
+    a.nav-link(href='/login') Logout
+
+block content
+  .container
+    .row
+      .col-xs-12.col-sm-12.col-md-6.col-lg-6.col-xs-offset-0.col-sm-offset-0.col-md-offset-3.col-lg-offset-3.toppad
+        .panel.panel-info
+          .panel-heading
+            p
+            h3.panel-title Tutor Details
+          .panel-body
+            .row
+              .col-md-3.col-lg-3(align='center')
+                img.img-circle.img-responsive(alt='Find My Tutor Logo', src='https://github.com/tutorwebsite/final-project-tutorwebsite/blob/master/images/findmytutorlogo.png?raw=true', width='140')
+              .col-md-9.col-lg-9
+                table.table.table-tutor-information
+                  tbody
+                    tr
+                      td Tutor Name:
+                      td=tutor.first + "" + tutor.last
+                    tr
+                      td Location:
+                      td=tutor.location
+                    tr
+                      td Grade:
+                      td=tutor.grade
+                    tr
+                    tr
+                      td Subject:
+                      td=tutor.subject
+                    tr
+                      td Availability:
+                      td=tutor.availability
+                    tr
+                    tr
+                      td Rating:
+                      td=tutor.rate
+                    tr
+                a.btn.btn-dark(href='#' style="margin-right: 1.5em") Update Profile
+                a.btn.btn-danger(href='#') Delete Profile

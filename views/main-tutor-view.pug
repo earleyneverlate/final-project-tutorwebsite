@@ -4,7 +4,7 @@ block navelements
   li.nav-item
     a.nav-link(href='/tutor/view') Find Tutors
   li.nav-item
-    a.nav-link(href='/student/view/studentdetails/:student_id') View Profile
+    a.nav-link(href='/student/view/profile/' +username) View Profile
   li.nav-item
     a.nav-link(href='/student/view/viewstudentappointment') View Appointments
   li.nav-item
@@ -29,23 +29,23 @@ block content
       ul.dropdown-menu
         input#myInput.form-control(type='text', placeholder='Filter by Subject')
         li
-          a(href='#') English
+          a(href='/tutor/view/English') English
         li
-          a(href='#') History
+          a(href='/tutor/view/History') History
         li
-          a(href='#') Calculus
+          a(href='/tutor/view/Calculus') Calculus
         li
-          a(href='#') Geometry
+          a(href='/tutor/view/Geometry') Geometry
         li
-          a(href='#') Algebra 
+          a(href='/tutor/view/Algebra') Algebra
         li
-          a(href='#') Computer Science
-        li 
-          a(href='#') Biology
-        li 
-          a(href='#') Chemistry
-        li 
-          a(href='#') Physics
+          a(href='/tutor/view/Computer Science') Computer Science
+        li
+          a(href='/tutor/view/Biology') Biology
+        li
+          a(href='/tutor/view/Chemistry') Chemistry
+        li
+          a(href='/tutor/view/Physics') Physics
     table.table.table-striped.table-bordered(style='margin-top: 1.5em')
       thead
         tr

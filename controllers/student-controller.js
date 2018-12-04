@@ -1,12 +1,12 @@
 //File Name: student-controller.js - This file contains the functions for the student routes
 StudentView = require('../models/student-model');
-
+Register = require('../models/register-model');
 //Imports
 
 // ############## HTML ROUTE FUNCTIONS #####################
 //Function to display student-profile-form
 exports.newstudent = function (req, res){
-  res.render('student-profile-form', {title:"New Student Profile", student:{}});
+  res.render('student-profile-form', {title:"New Student Profile", username: req.flash('username'), student:{}});
 };
 
 //Function to display page with list of all students
@@ -15,7 +15,7 @@ exports.allstudents = function (req, res){
     if (err) {
       res.render('error', {message: "Uh oh! No students were retrieved."});
     } else {
-      res.render('main-student-view', {title:"Find Students", message: req.flash('message'), tutorid: req.flash('tutorid'), students:student});
+      res.render('main-student-view', {title:"Find Students", message: req.flash('message'), username: req.flash('username'), tutorid: req.flash('tutorid'), students:student});
     }
   });
 };
@@ -42,11 +42,26 @@ exports.viewstudent = function (req, res) {
   });
 };
 
+//Function to get student by username and display on view profile
+exports.viewstudentprofile = function (req, res) {
+  StudentView.findOne({ username: req.params.username })
+  .exec(function (err, student) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!student) {
+      res.render('error', {message: "No tutor found!"});
+    } else {
+      res.render('student-profile', {student: student});
+    }
+  });
+};
+
 //Function to add new student to database
 exports.addstudent = function (req, res) {
     var studentView = new StudentView();
     studentView.first = req.body.first;
     studentView.last = req.body.last;
+    studentView.username = req.body.username;
     studentView.location = req.body.location;
     studentView.grade = req.body.grade;
     studentView.subject = req.body.subject;
@@ -57,9 +72,23 @@ exports.addstudent = function (req, res) {
         res.render('error', {message: err});
       } else {
         req.flash('message', 'Profile created! Find tutors below.');
+        req.flash('username', studentView.username);
         res.redirect('/tutor/view');
       }
     });
+};
+
+exports.filterstudentsubject = function (req, res) {
+  StudentView.find({ subject: req.params.student_subject })
+  .exec(function (err, subject) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!subject) {
+      res.render('error', {message: "No subject found!"});
+    } else {
+      res.render('main-student-view', {title:"Find Students", message: req.flash('message'), students:student})
+    }
+  });
 };
 
 // ############## API ROUTE FUNCTIONS #####################

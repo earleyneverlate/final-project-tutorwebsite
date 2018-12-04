@@ -31,8 +31,10 @@ exports.login = function (req, res) {
           res.redirect('./register');
         } else if (user.password === login.password) {
           if (user.role === "tutor") {
+            req.flash('username', user.username);
             res.redirect('./student/view');
           } else {
+            req.flash('username', user.username);
             res.redirect('./tutor/view');
           }
         } else {
@@ -55,8 +57,10 @@ exports.adduser = function (req, res) {
       if (err) {
         res.render('error', {message: err});
       } else if(register.role === "tutor") {
+        req.flash('username', register.username);
         res.redirect('/tutor/new/');
       } else if(register.role === "student") {
+        req.flash('username', register.username);
         res.redirect('/student/new/');
       }
     });

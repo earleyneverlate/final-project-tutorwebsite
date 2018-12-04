@@ -46,6 +46,12 @@ router.route('/tutor/view')
 router.route('/tutor/view/:tutor_id')
     .get(tutorviewController.viewtutor)
 
+router.route('/tutor/view/profile/:username')
+    .get(tutorviewController.viewtutorprofile)
+
+router.route('/tutor/view/:tutor_subject')
+    .get(tutorviewController.filtertutorsubject)
+
 //student routes
 router.route('/student/new/')
     .get(studentviewController.newstudent)
@@ -57,8 +63,11 @@ router.route('/student/view')
 router.route('/student/view/:student_id')
     .get(studentviewController.viewstudent)
 
-router.route('/student/view/studentdetails/:student_id')
-    .get(studentviewController.viewstudent)
+router.route('/student/view/profile/:username')
+    .get(studentviewController.viewstudentprofile)
+
+router.route('/student/view/:student_subject')
+    .get(studentviewController.filterstudentsubject)
 
 //login routes
 router.route('/login')
@@ -99,6 +108,9 @@ router.route('/api/student/:student_id')
 router.route('/api/student/view/studentdetails')
 	.get(studentviewController.view)
 
+router.route('/api/student/view/:student_subject')
+	.get(studentviewController.view)
+
 //tutor view API routes
 router.route('/api/tutor')
 	.get(tutorviewController.index)
@@ -110,6 +122,9 @@ router.route('/api/tutor/:tutor_id')
   .delete(tutorviewController.delete);
 
 router.route('/api/tutor/view/tutordetails')
+        .get(tutorviewController.view)
+
+router.route('/api/tutor/view/:tutor_subject')
         .get(tutorviewController.view)
 
 //Export module
