@@ -22,6 +22,30 @@ block content
   body
     p.login-text.text-center= message
     h2.mt-5=title
+    .dropdown
+      button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+        | Dropdown Example
+        span.caret
+      ul.dropdown-menu
+        input#myInput.form-control(type='text', placeholder='Filter by Subject')
+        li
+          a(href='#') English
+        li
+          a(href='#') History
+        li
+          a(href='#') Calculus
+        li
+          a(href='#') Geometry
+        li
+          a(href='#') Algebra 
+        li
+          a(href='#') Computer Science
+        li 
+          a(href="#') Biology
+        li 
+          a(href='#') Chemistry
+        li 
+          a(href='#') Physics
     table.table.table-striped.table-bordered(style='margin-top: 1.5em')
       thead
         tr
