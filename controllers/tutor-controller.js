@@ -132,3 +132,16 @@ exports.delete = function (req, res) {
         res.status(204).send();
     });
 };
+
+exports.filtertutorsubject = function (req, res) {
+  TutorView.find({ subject: req.params.tutor_subject })
+  .exec(function (err, subject) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!subject) {
+      res.render('error', {message: "No subject found!"});
+    } else {
+      res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), tutors:tutor})
+    }
+  });
+};
