@@ -21,13 +21,11 @@ block content
 
   body
     p.login-text.text-center= message
-    h5.mt-5 Welcome Student ID Number:
-    h6=idnumber
     h2.mt-5=title
     table.table.table-striped.table-bordered(style='margin-top: 1.5em')
       thead
         tr
-          th(scope='col') Tutor ID
+          th(scope='col') Tutor Name
           th(scope='col') Location
           th(scope='col') Grade
           th(scope='col') Subject
@@ -36,7 +34,7 @@ block content
         each tutor in tutors
           tr
             td
-              a(href='/tutor/view/' + tutor.id)= tutor.user
+              a(href='/tutor/view/' + tutor.id)= tutor.first + " " + tutor.last
             td=tutor.location
             td=tutor.grade
             td=tutor.subject
