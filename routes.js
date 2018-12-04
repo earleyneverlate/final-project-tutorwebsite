@@ -54,7 +54,11 @@ router.route('/tutor/view/subject/:tutor_subject')
     .get(tutorviewController.filtertutorsubject)
 
 router.route('/tutor/profile/remove/:username')
-    .post(studentviewController.removestudentprofile)
+    .post(tutorviewController.removetutorprofile)
+
+router.route('/tutor/profile/update/:username')
+    .get(tutorviewController.updatetutorprofile)
+    .post(tutorviewController.postupdatetutor)
 
 //student routes
 router.route('/student/new/')

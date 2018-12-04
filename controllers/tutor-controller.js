@@ -9,6 +9,51 @@ exports.newtutor = function (req, res){
   res.render('tutor-profile-form', {title:"New Tutor Profile", username: req.flash('username'), tutor:{}});
 };
 
+//Function to display tutor-profile-form
+exports.updatetutorprofile = function (req, res){
+  TutorView.findOne({ username: req.params.username })
+  .exec(function (err, tutor) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!tutor) {
+      res.render('error', {message: "No tutor found!"});
+    } else {
+
+      res.render('tutor-profile-form', {title:"Update Tutor Profile", username: req.params.username, tutor: tutor});
+    }
+  });
+};
+
+//Function to update tutor to database
+exports.postupdatetutor = function (req, res) {
+  TutorView.findOne({ username: req.params.username })
+  .exec(function (err, tutor) {
+    if (err) {
+      res.render('error', {message: err});
+    } else if (!tutor) {
+      res.render('error', {message: "No tutor found!"});
+    } else {
+      tutor.first = req.body.first;
+      tutor.last = req.body.last;
+      tutor.username = req.body.username;
+      tutor.location = req.body.location;
+      tutor.grade = req.body.grade;
+      tutor.subject = req.body.subject;
+      tutor.availability = req.body.availability;
+
+      tutor.save(function (err, tutor) {
+        if (err) {
+          res.render('error', {message: err});
+        } else {
+          req.flash('message', 'Profile updated! Find students below.');
+          req.flash('username', tutor.username);
+          res.redirect('/student/view');
+        }
+      });
+    }
+  });
+};
+
 //Function to display page with list of all tutors
 exports.alltutors = function (req, res){
   TutorView.get(function (err, tutor) {

@@ -40,7 +40,9 @@ block content
                       td Rating:
                       td=tutor.rate
                     tr
-                .btn.btn-dark(style="margin-right: 1.5em") Update Profile
+                form(action='/tutor/profile/update/' + tutor.username, method="get")
+                  .form-group
+                    button.btn.btn-dark(style="margin-right: 1.5em") Update Profile
                 form(action='/tutor/profile/remove/' + tutor.username, method="post")
                   .form-group
                     button.btn.btn-danger(style="margin-right: 1.5em" type=submit) Delete Profile

@@ -16,7 +16,7 @@ exports.updatestudentprofile = function (req, res){
     if (err) {
       res.render('error', {message: err});
     } else if (!student) {
-      res.render('error', {message: "No tutor found!"});
+      res.render('error', {message: "No student found!"});
     } else {
 
       res.render('student-profile-form', {title:"Update Student Profile", username: req.params.username, student: student});
@@ -24,14 +24,14 @@ exports.updatestudentprofile = function (req, res){
   });
 };
 
-//Function to add new student to database
+//Function to update student to database
 exports.postupdatestudent = function (req, res) {
   StudentView.findOne({ username: req.params.username })
   .exec(function (err, student) {
     if (err) {
       res.render('error', {message: err});
     } else if (!student) {
-      res.render('error', {message: "No tutor found!"});
+      res.render('error', {message: "No student found!"});
     } else {
       student.first = req.body.first;
       student.last = req.body.last;
