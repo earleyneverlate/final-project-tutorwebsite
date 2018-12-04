@@ -78,7 +78,7 @@ router.route('/student/view/subject/:student_subject')
     .get(studentviewController.filterstudentsubject)
 
 router.route('/student/view/:student_subject')
-    .get(studentViewController.viewstudent)
+    .get(studentviewController.viewstudent)
 
 //login routes
 router.route('/login')
