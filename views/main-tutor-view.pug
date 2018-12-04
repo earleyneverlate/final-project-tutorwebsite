@@ -6,7 +6,7 @@ block navelements
   li.nav-item
     a.nav-link(href='/student/view/profile/' +username) View Profile
   li.nav-item
-    a.nav-link(href='/student/view/viewstudentappointment') View Appointments
+    a.nav-link(href='#') View Appointments
   li.nav-item
     a.nav-link(href='/login') Logout
 
@@ -58,7 +58,7 @@ block content
         each tutor in tutors
           tr
             td
-              a(href='/tutor/view/' + tutor.id)= tutor.first + " " + tutor.last
+              a(href='/tutor/view/' + tutor.username)= tutor.first + " " + tutor.last
             td=tutor.location
             td=tutor.grade
             td=tutor.subject

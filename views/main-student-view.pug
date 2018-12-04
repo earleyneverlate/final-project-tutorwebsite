@@ -58,7 +58,7 @@ block content
         each student in students
           tr
             td
-              a(href='/student/view/' + student.id)= student.first + " " + student.last
+              a(href='/student/view/' + student.username)= student.first + " " + student.last
             td=student.location
             td=student.grade
             td=student.subject

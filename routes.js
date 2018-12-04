@@ -43,7 +43,7 @@ router.route('/tutor/new/')
 router.route('/tutor/view')
     .get(tutorviewController.alltutors)
 
-router.route('/tutor/view/:tutor_id')
+router.route('/tutor/view/:username')
     .get(tutorviewController.viewtutor)
 
 router.route('/tutor/view/profile/:username')
@@ -60,7 +60,7 @@ router.route('/student/new/')
 router.route('/student/view')
     .get(studentviewController.allstudents)
 
-router.route('/student/view/:student_id')
+router.route('/student/view/:username')
     .get(studentviewController.viewstudent)
 
 router.route('/student/view/profile/:username')

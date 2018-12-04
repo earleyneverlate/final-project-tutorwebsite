@@ -15,7 +15,7 @@ exports.allstudents = function (req, res){
     if (err) {
       res.render('error', {message: "Uh oh! No students were retrieved."});
     } else {
-      res.render('main-student-view', {title:"Find Students", message: req.flash('message'), username: req.flash('username'), tutorid: req.flash('tutorid'), students:student});
+      res.render('main-student-view', {title:"Find Students", message: req.flash('message'), username: req.flash('username'), students:student});
     }
   });
 };
@@ -33,9 +33,12 @@ exports.studentindex = function (req, res) {
 
 //Function to get student by ID and display on student-detail page
 exports.viewstudent = function (req, res) {
-  StudentView.findById(req.params.student_id, function (err, student) {
+  StudentView.findOne({ username: req.params.username })
+  .exec(function (err, student) {
     if (err) {
-      res.render('error', {message: "Oops! No student found."});
+      res.render('error', {message: err});
+    } else if (!student) {
+      res.render('error', {message: "No tutor found!"});
     } else {
       res.render('student-detail', {student: student});
     }

@@ -15,7 +15,7 @@ exports.alltutors = function (req, res){
     if (err) {
       res.render('error', {message: "Uh oh! No tutors were retrieved."});
     } else {
-      res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), username: req.flash('username'), idnumber: req.flash('idnumber'), tutors:tutor});
+      res.render('main-tutor-view', {title:"Find Tutors", message: req.flash('message'), username: req.flash('username'), tutors:tutor});
     }
   });
 };
@@ -33,9 +33,12 @@ exports.tutorindex = function (req, res) {
 
 //Function to get tutor by ID and display on tutor-detail page
 exports.viewtutor = function (req, res) {
-  TutorView.findById(req.params.tutor_id, function (err, tutor) {
+  TutorView.findOne({ username: req.params.username })
+  .exec(function (err, tutor) {
     if (err) {
-      res.render('error', {message: "Oops! No tutor found."});
+      res.render('error', {message: err});
+    } else if (!tutor) {
+      res.render('error', {message: "No tutor found!"});
     } else {
       res.render('tutor-detail', {tutor: tutor});
     }
