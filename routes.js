@@ -46,12 +46,17 @@ router.route('/tutor/view')
 router.route('/tutor/view/:username')
     .get(tutorviewController.viewtutor)
     .post(tutorviewController.submitrating)
+    .put(tutorviewController.update)
+    .delete(tutorviewController.delete);
 
 router.route('/tutor/view/profile/:username')
     .get(tutorviewController.viewtutorprofile)
 
 router.route('/tutor/view/subject/:tutor_subject')
     .get(tutorviewController.filtertutorsubject)
+
+router.route('/tutor/view/:tutor_subject')
+    .get(tutorviewController.viewtutor)
 
 //student routes
 router.route('/student/new/')
@@ -63,12 +68,17 @@ router.route('/student/view')
 
 router.route('/student/view/:username')
     .get(studentviewController.viewstudent)
+    .put(studentviewController.update)
+    .delete(studentviewController.delete);
 
 router.route('/student/view/profile/:username')
     .get(studentviewController.viewstudentprofile)
 
 router.route('/student/view/subject/:student_subject')
     .get(studentviewController.filterstudentsubject)
+
+router.route('/student/view/:student_subject')
+    .get(studentViewController.viewstudent)
 
 //login routes
 router.route('/login')
@@ -103,8 +113,8 @@ router.route('/api/student')
 
 router.route('/api/student/:student_id')
 	.get(studentviewController.view)
-  .put(studentviewController.update)
-  .delete(studentviewController.delete);
+    .put(studentviewController.update)
+    .delete(studentviewController.delete);
 
 router.route('/api/student/view/studentdetails')
 	.get(studentviewController.view)
@@ -119,14 +129,14 @@ router.route('/api/tutor')
 
 router.route('/api/tutor/:tutor_id')
 	.get(tutorviewController.view)
-  .put(tutorviewController.update)
-  .delete(tutorviewController.delete);
+    .put(tutorviewController.update)
+    .delete(tutorviewController.delete);
 
 router.route('/api/tutor/view/tutordetails')
-        .get(tutorviewController.view)
+    .get(tutorviewController.view)
 
 router.route('/api/tutor/view/:tutor_subject')
-        .get(tutorviewController.view)
+    .get(tutorviewController.view)
 
 //Export module
 module.exports = router;
