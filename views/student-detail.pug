@@ -5,12 +5,6 @@ block links
 
 block navelements
   li.nav-item
-    a.nav-link(href='/student/view') Find Students
-  li.nav-item
-    a.nav-link(href='/tutor/view/profile/' +username) View Profile
-  li.nav-item
-    a.nav-link(href='/tutor/view/viewtutorappointment/:tutor_id') View Appointments
-  li.nav-item
     a.nav-link(href='/login') Logout
 
 block content
@@ -46,4 +40,9 @@ block content
                     td Availability:
                     td=student.availability
                   tr
-              a.btn.btn-dark(href='../../appointment/new/student/' +student.username) Schedule Appointment
+              a.btn.btn-dark(href='../../appointment/new/student/' +student.username, style='margin-right: 1.5em') Schedule Appointment
+              a.btn.btn-secondary(onclick='goBack()', style="color: white") Back
+              script.
+                function goBack() {
+                window.history.back();
+                }

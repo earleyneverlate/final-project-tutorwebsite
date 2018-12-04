@@ -54,7 +54,7 @@ exports.viewstudentprofile = function (req, res) {
     } else if (!student) {
       res.render('error', {message: "No tutor found!"});
     } else {
-      res.render('student-profile', {student: student});
+      res.render('student-profile', {student: student, username: req.flash('username')});
     }
   });
 };
