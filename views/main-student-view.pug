@@ -24,7 +24,7 @@ block content
     h2.mt-5=title
     .dropdown
       button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
-        | Dropdown Example
+        | Filter by Subject
         span.caret
       ul.dropdown-menu
         input#myInput.form-control(type='text', placeholder='Filter by Subject')
@@ -41,7 +41,7 @@ block content
         li
           a(href='#') Computer Science
         li 
-          a(href="#') Biology
+          a(href='#') Biology
         li 
           a(href='#') Chemistry
         li 
@@ -64,7 +64,9 @@ block content
             td=student.subject
             td=student.availability
             
-block script
+block scripts
+  script(type='text/javascript' src='https://code.jquery.com/jquery-1.11.3.min.js')
+  script.
      $(document).ready(function(){
       $("#myInput").on("keyup", function() {
       var value = $(this).val().toLowerCase();

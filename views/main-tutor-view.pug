@@ -22,6 +22,30 @@ block content
   body
     p.login-text.text-center= message
     h2.mt-5=title
+    .dropdown
+      button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+        | Filter by Subject
+        span.caret
+      ul.dropdown-menu
+        input#myInput.form-control(type='text', placeholder='Filter by Subject')
+        li
+          a(href='#') English
+        li
+          a(href='#') History
+        li
+          a(href='#') Calculus
+        li
+          a(href='#') Geometry
+        li
+          a(href='#') Algebra 
+        li
+          a(href='#') Computer Science
+        li 
+          a(href='#') Biology
+        li 
+          a(href='#') Chemistry
+        li 
+          a(href='#') Physics
     table.table.table-striped.table-bordered(style='margin-top: 1.5em')
       thead
         tr
@@ -39,3 +63,15 @@ block content
             td=tutor.grade
             td=tutor.subject
             td=tutor.availability
+
+block scripts
+  script(type='text/javascript' src='https://code.jquery.com/jquery-1.11.3.min.js')
+  script.
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $(".dropdown-menu li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+      });
+      });
