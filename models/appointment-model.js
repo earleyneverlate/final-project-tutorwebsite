@@ -7,14 +7,14 @@ var mongoose = require('mongoose');
 //Database Schema
 var scheduleAppointmentSchema = mongoose.Schema({
     tutor: {
-        //type: Schema.Types.ObjectId, ref: 'Tutor'
-        type: String,
-        required: true
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'tutorView',
+          required: true
     },
     student: {
-        //type: Schema.Types.ObjectId, ref: 'Student'
-        type: String,
-        required: true
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'studentView',
+          required: true
     },
     appointmentDate: {
       type: Date,

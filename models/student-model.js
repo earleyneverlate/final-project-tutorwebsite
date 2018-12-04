@@ -5,7 +5,11 @@ let mongoose = require('mongoose');
 
 //Database Schema
 var studentViewSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'register',
+        required: true
+  },
   location: { type: String, required: true },
   grade: { type: String, required: true },
   subject: { type: String, required: true },
@@ -13,7 +17,7 @@ var studentViewSchema = new mongoose.Schema({
 });
 
 //Export view student model
-let StudentView = module.exports = mongoose.model('StudentView', studentViewSchema);
+let StudentView = module.exports = mongoose.model('studentView', studentViewSchema);
 module.exports.get = function (callback, limit) {
     StudentView.find(callback).limit(limit);
 }

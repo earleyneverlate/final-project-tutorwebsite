@@ -1,9 +1,13 @@
-doctype html
-html(lang='en')
+extends layout.pug
+
+block navelements
+  li.nav-item
+    a.nav-link(href='../') About
+  li.nav-item
+    a.nav-link(href='./register') Sign Up
+
+block content
   head
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
     style(type='text/css').
       .login-form {
       width: 340px;
@@ -26,15 +30,19 @@ html(lang='en')
       font-size: 15px;
       font-weight: bold;
       }
+      .login-text {
+      color: #f7be71;
+      }
   body
     .login-form
-      form(action='/examples/actions/confirmation.php', method='post')
+      form(method='post')
+        p.login-text.text-center= message
         h2.text-center Find my Tutor
         .form-group
-          input.form-control(type='text', placeholder='Username', required='required')
+          input.form-control(type='text' placeholder='Username' required='required' name='username' value=login.username)
         .form-group
-          input.form-control(type='password', placeholder='Password', required='required')
+          input.form-control(type='password' placeholder='Password' required='required' name='password' value=login.password)
         .form-group
-          button.btn.btn-primary.btn-block(type='submit') Login 
+          button.btn.btn-primary.btn-block(type='submit') Login
       p.text-center
-        a(href='#') Create an Account
+        a(href='./register') Create an Account

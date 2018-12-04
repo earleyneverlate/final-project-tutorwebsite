@@ -3,6 +3,8 @@
 //Imports
 let express = require('express'),
     app = express(),
+    session = require('express-session'),
+    flash = require('req-flash'),
     port = process.env.PORT || 3000,
     routes = require("./routes"),
     bodyParser = require('body-parser'),
@@ -13,6 +15,12 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+app.use(session({
+  secret: 'djhxcvxfgshajfgjhgsjhfgsakjeauytsdfy',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(flash());
 app.set('view engine', 'pug')
 app.set('views', __dirname + '/views');
 
