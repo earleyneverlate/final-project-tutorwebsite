@@ -2,10 +2,6 @@ extends layout.pug
 
 block navelements
   li.nav-item
-    a.nav-link(href='/tutor/view') Find Tutors
-  li.nav-item
-    a.nav-link(href='#') View Appointments
-  li.nav-item
     a.nav-link(href='/login') Logout
 
 block content
@@ -49,4 +45,9 @@ block content
                       td=tutor.rate
                     tr
                 a.btn.btn-dark(href='#' style="margin-right: 1.5em") Update Profile
-                a.btn.btn-danger(href='#') Delete Profile
+                a.btn.btn-danger(href='#' style="margin-right: 1.5em") Delete Profile
+                a.btn.btn-secondary(onclick='goBack()', style="color: white") Back
+                script.
+                  function goBack() {
+                  window.history.back();
+                  }

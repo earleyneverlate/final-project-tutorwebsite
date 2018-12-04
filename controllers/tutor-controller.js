@@ -76,7 +76,7 @@ exports.viewtutorprofile = function (req, res) {
     } else if (!tutor) {
       res.render('error', {message: "No tutor found!"});
     } else {
-      res.render('tutor-profile', {tutor: tutor});
+      res.render('tutor-profile', {username: req.flash('username'), tutor: tutor});
     }
   });
 };
